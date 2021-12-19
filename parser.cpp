@@ -445,20 +445,24 @@ long long TransQuantity(const char *quantity) {
     return trans;
 }
 
-std::vector<char *> KeyWordParser(const char *keyword_) {
+void KeyWordParser(const char *keyword_, int &num, char keys[][60]) {
     char keyword[65];
     strcpy(keyword, keyword_);
-    std::vector<char *> keys;
+//     std::vector<char *> keys;
 //    if (keyword[0] == '|') {
 //        keyword = &keyword[1];
 //    }
+    num = 0;
     char *token = strtok(keyword, "|");
-    keys.push_back(token);
+   strcpy(keys[num],token);
     while (token != nullptr) {
         token = strtok(nullptr, "|");
-        if (token != nullptr)keys.push_back(token);
+        if (token != nullptr) {
+            num++;
+            strcpy(keys[num] , token);
+        }
     }
-    return keys;
+
 }
 
 bool KeywordRepeated(const char *keyword) {

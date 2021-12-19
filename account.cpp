@@ -164,8 +164,10 @@ void Manager::Delete(char *id) {
 void Manager::Show(char *isbn, char *name, char *author, char *keyword) {
     std::fstream file;
     if (isbn == nullptr && name == nullptr && author == nullptr && keyword != nullptr) {
-        std::vector<char *> key_to_find = KeyWordParser(keyword);
-        if (key_to_find.size() > 1) {
+        int num;
+        char keys[60][60];
+        KeyWordParser(keyword, num, keys);
+        if (num > 0) {
             InvalidReport();
             return;
         }
@@ -343,17 +345,16 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
             InvalidReport();
             return;
         }
-        std::vector<char *> keyword_to_modify = KeyWordParser(keyword);
+        int num;
+        char keys[60][60];
+        KeyWordParser(keyword, num, keys);
         //先把原来的关键词键值对都删掉，然后再把新的关键词键值对加入进去
         for (int i = 0; strcmp(to_modify.keyword[i], "\0") != 0; ++i) {
             keyword_book_list.DeletePair(to_modify.keyword[i], location);
             memset(to_modify.keyword[i], '\0', sizeof(to_modify.keyword[i]));
         }
-        int counter = 0;
-        for (auto ptr = keyword_to_modify.begin(); ptr != keyword_to_modify.end(); ++ptr, ++counter) {
-            strcpy(to_modify.keyword[counter], *ptr);
-        }
-        for (int i = 0; strcmp(to_modify.keyword[i], "\0") != 0; ++i) {
+        for (int i = 0; i <= num; ++i) {
+            strcpy(to_modify.keyword[i], keys[i]);
             keyword_book_list.InsertPair(to_modify.keyword[i], location);
         }
     }
@@ -534,8 +535,10 @@ void Employee::Delete(char *id) {
 void Employee::Show(char *isbn, char *name, char *author, char *keyword) {
     std::fstream file;
     if (isbn == nullptr && name == nullptr && author == nullptr && keyword != nullptr) {
-        std::vector<char *> key_to_find = KeyWordParser(keyword);
-        if (key_to_find.size() > 1) {
+        int num;
+        char keys[60][60];
+        KeyWordParser(keyword, num, keys);
+        if (num > 0) {
             InvalidReport();
             return;
         }
@@ -714,17 +717,16 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
             InvalidReport();
             return;
         }
-        std::vector<char *> keyword_to_modify = KeyWordParser(keyword);
+        int num;
+        char keys[60][60];
+        KeyWordParser(keyword, num, keys);
         //先把原来的关键词键值对都删掉，然后再把新的关键词键值对加入进去
         for (int i = 0; strcmp(to_modify.keyword[i], "\0") != 0; ++i) {
             keyword_book_list.DeletePair(to_modify.keyword[i], location);
             memset(to_modify.keyword[i], '\0', sizeof(to_modify.keyword[i]));
         }
-        int counter = 0;
-        for (auto ptr = keyword_to_modify.begin(); ptr != keyword_to_modify.end(); ++ptr, ++counter) {
-            strcpy(to_modify.keyword[counter], *ptr);
-        }
-        for (int i = 0; strcmp(to_modify.keyword[i], "\0") != 0; ++i) {
+        for (int i = 0; i < num; ++i) {
+            strcpy(to_modify.keyword[i], keys[i]);
             keyword_book_list.InsertPair(to_modify.keyword[i], location);
         }
     }
@@ -884,8 +886,10 @@ void Customer::Delete(char *id) {
 void Customer::Show(char *isbn, char *name, char *author, char *keyword) {
     std::fstream file;
     if (isbn == nullptr && name == nullptr && author == nullptr && keyword != nullptr) {
-        std::vector<char *> key_to_find = KeyWordParser(keyword);
-        if (key_to_find.size() > 1) {
+        int num;
+        char keys[60][60];
+        KeyWordParser(keyword, num, keys);
+        if (num > 0) {
             InvalidReport();
             return;
         }

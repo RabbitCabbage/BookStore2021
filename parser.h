@@ -62,7 +62,7 @@ bool IsLetter(char a);
 
 bool IsVisibal(char a);
 
-std::vector<char *> KeyWordParser(const char *keyword);
+void KeyWordParser(const char *keyword,int& num,char keys[][60]);
 
 bool KeywordRepeated(const char *keyword);
 

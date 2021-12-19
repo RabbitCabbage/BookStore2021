@@ -20,11 +20,6 @@ int main() {
         memset(command,'\0',1024*sizeof(char));
         std::cin.getline(command, 1024);
         CommandCarryOut(command, running);
-//        std::cout<<"Currnet:\n"<<current_account->GetInfo().UserID<<" "<<current_account->GetInfo().Username<<std::endl;
-//        std::cout<<"LOGIN:\n";
-//        for(auto ptr=Login.begin();ptr!=Login.end();++ptr){
-//            std::cout<<(*ptr)->GetInfo().UserID<<" "<<(*ptr)->GetInfo().Username<<std::endl;
-//        }
     }
     delete command;
     return 0;
