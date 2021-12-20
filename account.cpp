@@ -327,9 +327,14 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
     file.seekp(location);
     if (isbn != nullptr) {
         //修改在list文件以及存储文件里面的信息
-        isbn_book_list.DeletePair(to_modify.ISBN, location);
-        strcpy(to_modify.ISBN, isbn);
-        isbn_book_list.InsertPair(isbn, location);
+        if (isbn_book_list.FindPairs(isbn) == -100000) {
+            isbn_book_list.DeletePair(to_modify.ISBN, location);
+            strcpy(to_modify.ISBN, isbn);
+            isbn_book_list.InsertPair(isbn, location);
+        } else {
+            InvalidReport();
+            return;
+        }
     }
     if (name != nullptr) {
         name_book_list.DeletePair(to_modify.name, location);
@@ -701,9 +706,14 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
     file.seekp(location);
     if (isbn != nullptr) {
         //修改在list文件以及存储文件里面的信息
-        isbn_book_list.DeletePair(to_modify.ISBN, location);
-        strcpy(to_modify.ISBN, isbn);
-        isbn_book_list.InsertPair(isbn, location);
+        if (isbn_book_list.FindPairs(isbn) == -100000) {
+            isbn_book_list.DeletePair(to_modify.ISBN, location);
+            strcpy(to_modify.ISBN, isbn);
+            isbn_book_list.InsertPair(isbn, location);
+        } else {
+            InvalidReport();
+            return;
+        }
     }
     if (name != nullptr) {
         name_book_list.DeletePair(to_modify.name, location);

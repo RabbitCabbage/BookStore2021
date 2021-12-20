@@ -423,15 +423,19 @@ bool PriceCheck(const char *price) {
 double TransPrice(const char *price) {
     if (price == nullptr)return 0;
     double trans = 0;
-    int i;
-    for (i = 0; price[i] != '.' && price[i] != '\0'; ++i) {
-        trans *= 10;
-        trans += price[i] - '0';
-    }
-    if (price[i] == '.' && price[i + 1] != '\0') {
-        trans += ((double) (price[++i] - '0')) / 10;
-        if (price[i + 1] != '\0')trans += ((double) (price[++i] - '0')) / 100;
-    }
+//    int i;
+//    for (i = 0; price[i] != '.' && price[i] != '\0'; ++i) {
+//        trans *= 10;
+//        trans += price[i] - '0';
+//    }
+//    if (price[i] == '.' && price[i + 1] != '\0') {
+//        trans += ((double) (price[++i] - '0')) / 10;
+//        if (price[i + 1] != '\0')trans += ((double) (price[++i] - '0')) / 100;
+//    }
+    std::stringstream ss;
+    ss.clear();
+    ss << price;
+    ss >> trans;
     return trans;
 }
 
@@ -454,12 +458,12 @@ void KeyWordParser(const char *keyword_, int &num, char keys[][60]) {
 //    }
     num = 0;
     char *token = strtok(keyword, "|");
-   strcpy(keys[num],token);
+    strcpy(keys[num], token);
     while (token != nullptr) {
         token = strtok(nullptr, "|");
         if (token != nullptr) {
             num++;
-            strcpy(keys[num] , token);
+            strcpy(keys[num], token);
         }
     }
 

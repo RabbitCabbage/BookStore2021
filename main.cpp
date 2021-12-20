@@ -3,7 +3,7 @@
 #include "command.h"
 #include "blocklist.h"
 
-//todo 在你用完strtok之后字符串就被破换掉了，没有进行考虑
+//to do 在你用完strtok之后字符串就被破换掉了，没有进行考虑
 BlockList account_list("AccountList");
 BlockList isbn_book_list("ISBN_BookList");
 BlockList name_book_list("Name_BookList");
