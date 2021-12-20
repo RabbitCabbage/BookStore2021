@@ -283,6 +283,7 @@ void Manager::Buy(char *isbn, int quantity) {
     ss >> total_str;
     std::cout << total_str << std::endl;
     RecordAnEntry(total);
+    UpdateSelectedBook(to_buy,to_buy.ISBN);
 }
 
 void Manager::Select(char *isbn) {
@@ -314,6 +315,7 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
         return;
     }
     bookInfo to_modify = selected_book[current_account];
+    char *modified_isbn=to_modify.ISBN;//记下原有的ISBN，便于把其他选择了这本书的人书的信息修改了
     int location = isbn_book_list.FindPairs(to_modify.ISBN);
     file.open("BookFile");
     file.seekp(location);
@@ -360,6 +362,7 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
     file.write(reinterpret_cast<char *>(&to_modify), sizeof(bookInfo));
     file.close();
     selected_book[current_account] = to_modify;
+    UpdateSelectedBook(to_modify,modified_isbn);
 }
 
 void Manager::Import(int quantity, double cost) {
@@ -377,6 +380,7 @@ void Manager::Import(int quantity, double cost) {
     file.close();
     RecordAnEntry((-1.0) * cost);
     selected_book[current_account] = to_import;
+    UpdateSelectedBook(to_import,to_import.ISBN);
 }
 
 void Manager::ReportMyself() {
@@ -652,6 +656,7 @@ void Employee::Buy(char *isbn, int quantity) {
     ss >> total_str;
     std::cout << total_str << std::endl;
     RecordAnEntry(total);
+    UpdateSelectedBook(to_buy,to_buy.ISBN);
 
 }
 
@@ -684,6 +689,7 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
         return;
     }
     bookInfo to_modify = selected_book[current_account];
+    char *modified_isbn=to_modify.ISBN;//记下原有的ISBN，便于把其他选择了这本书的人书的信息修改了
     int location = isbn_book_list.FindPairs(to_modify.ISBN);
     file.open("BookFile");
     file.seekp(location);
@@ -729,7 +735,8 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
     if (price != -1)to_modify.price = price;
     file.write(reinterpret_cast<char *>(&to_modify), sizeof(bookInfo));
     file.close();
-    selected_book[current_account] = to_modify;
+    selected_book[current_account] = to_modify;//todo
+    UpdateSelectedBook(to_modify,modified_isbn);
 }
 
 void Employee::Import(int quantity, double cost) {
@@ -747,6 +754,7 @@ void Employee::Import(int quantity, double cost) {
     file.close();
     RecordAnEntry((-1.0) * cost);
     selected_book[current_account] = to_import;
+    UpdateSelectedBook(to_import,to_import.ISBN);
 }
 
 void Employee::ReportMyself() {
@@ -1001,7 +1009,7 @@ void Customer::Buy(char *isbn, int quantity) {
     ss >> total_str;
     std::cout << total_str << std::endl;
     RecordAnEntry(total);
-
+    UpdateSelectedBook(to_buy,to_buy.ISBN);
 }
 
 

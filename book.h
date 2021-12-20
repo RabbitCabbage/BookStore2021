@@ -16,7 +16,7 @@ struct bookInfo {
     char ISBN[30];
     char keyword[70][70];
     int number = 0;
-    double price=0;
+    double price = 0;
 };
 
 bool operator<(const bookInfo &lhs, const bookInfo &rhs);
@@ -33,5 +33,7 @@ public:
 };
 
 void _ShowABook(bookInfo &info);
+
+void UpdateSelectedBook(const bookInfo &to_modify, char *modified_isbn);
 
 #endif //BOOK_H

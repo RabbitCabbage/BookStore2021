@@ -2,8 +2,16 @@
 // Created by lu'ren'jia'd's on 2021/12/17.
 //
 #include "book.h"
+#include "account.h"
 #include <cstring>
+#include <vector>
+#include <map>
 #include <iomanip>
+
+struct bookInfo;
+extern People *current_account;
+extern std::vector<People *> Login;
+extern std::map<People *, bookInfo> selected_book;
 
 book::book() {
     info.price = 0;
@@ -71,4 +79,11 @@ void _ShowABook(bookInfo &info) {
     ss << std::setprecision(2) << info.price;
     ss >> price_str;
     std::cout << price_str << '\t' << info.number << '\n';
+}
+
+//传入改之后的版本，以及被修改的书的ISBN
+void UpdateSelectedBook(const bookInfo &update, char *modified_isbn) {
+    for (auto ptr = selected_book.begin(); ptr != selected_book.end(); ++ptr) {
+        if (strcmp(ptr->second.ISBN,modified_isbn) == 0)ptr->second = update;
+    }
 }
