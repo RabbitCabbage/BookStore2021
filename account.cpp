@@ -725,7 +725,7 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
             keyword_book_list.DeletePair(to_modify.keyword[i], location);
             memset(to_modify.keyword[i], '\0', sizeof(to_modify.keyword[i]));
         }
-        for (int i = 0; i < num; ++i) {
+        for (int i = 0; i <= num; ++i) {
             strcpy(to_modify.keyword[i], keys[i]);
             keyword_book_list.InsertPair(to_modify.keyword[i], location);
         }
