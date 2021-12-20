@@ -5,6 +5,7 @@
 #include "log.h"
 #include <fstream>
 #include <sstream>
+#include <iomanip>
 
 std::fstream log_file;
 
@@ -35,31 +36,15 @@ std::string ShowEntry(int num) {
     std::string price_str;
     ss.clear();
     price_str.clear();
-    ss << income;
+    ss.setf(std::ios::fixed);
+    ss << std::setprecision(2) << income;
     ss >> price_str;
-    int counter = 0;
-    for (counter = 0; counter < price_str.length(); ++counter) {
-        if (price_str[counter] == '.')break;
-    }
-    if (counter == price_str.length()) {
-        price_str += ".00";
-    } else if (counter == price_str.length() - 1) {
-        price_str += '0';
-    }
     report += "+ " + price_str;
     ss.clear();
     price_str.clear();
-    ss << (-1.0) * expense;
+    ss.setf(std::ios::fixed);
+    ss << std::setprecision(2) << (-1.0) * expense;
     ss >> price_str;
-    counter = 0;
-    for (counter = 0; counter < price_str.length(); ++counter) {
-        if (price_str[counter] == '.')break;
-    }
-    if (counter == price_str.length()) {
-        price_str += ".00";
-    } else if (counter == price_str.length() - 1) {
-        price_str += '0';
-    }
     report += " - " + price_str;
     report += "\n";
     return report;
@@ -80,31 +65,15 @@ std::string ShowAllEntry() {
     std::string price_str;
     ss.clear();
     price_str.clear();
-    ss << income;
+    ss.setf(std::ios::fixed);
+    ss <<std::setprecision(2)<< income;
     ss >> price_str;
-    int counter = 0;
-    for (counter = 0; counter < price_str.length(); ++counter) {
-        if (price_str[counter] == '.')break;
-    }
-    if (counter == price_str.length()) {
-        price_str += ".00";
-    } else if (counter == price_str.length() - 1) {
-        price_str += '0';
-    }
     report += "+ " + price_str;
     ss.clear();
     price_str.clear();
-    ss << (-1.0) * expense;
+    ss.setf(std::ios::fixed);
+    ss << std::setprecision(2) << (-1.0) * expense;
     ss >> price_str;
-    counter = 0;
-    for (counter = 0; counter < price_str.length(); ++counter) {
-        if (price_str[counter] == '.')break;
-    }
-    if (counter == price_str.length()) {
-        price_str += ".00";
-    } else if (counter == price_str.length() - 1) {
-        price_str += '0';
-    }
     report += " - " + price_str;
     report += "\n";
     return report;

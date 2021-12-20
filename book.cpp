@@ -3,6 +3,7 @@
 //
 #include "book.h"
 #include <cstring>
+#include <iomanip>
 
 book::book() {
     info.price = 0;
@@ -34,18 +35,9 @@ void book::ShowABook() {
     std::stringstream ss;
     std::string price_str;
     ss.clear();
-    ss << info.price;
+    ss.setf(std::ios::fixed);
+    ss << std::setprecision(2) << info.price;
     ss >> price_str;
-    int counter = 0;
-    for (counter = 0; counter < price_str.length(); ++counter) {
-        if (price_str[counter] == '.')break;
-    }
-    if (counter == price_str.length()) {
-        price_str += ".00";
-    } else if (counter == price_str.length() - 1) {
-        price_str += '0';
-    }
-    if (counter == price_str.length() - 2)price_str += '0';
     std::cout << price_str << '\t' << info.number << '\n';
 }
 
@@ -75,17 +67,8 @@ void _ShowABook(bookInfo &info) {
     std::stringstream ss;
     std::string price_str;
     ss.clear();
-    ss << info.price;
+    ss.setf(std::ios::fixed);
+    ss << std::setprecision(2) << info.price;
     ss >> price_str;
-    int counter = 0;
-    for (counter = 0; counter < price_str.length(); ++counter) {
-        if (price_str[counter] == '.')break;
-    }
-    if (counter == price_str.length()) {
-        price_str += ".00";
-    } else if (counter == price_str.length() - 1) {
-        price_str += '0';
-    }
-    if (counter == price_str.length() - 2)price_str += '0';
     std::cout << price_str << '\t' << info.number << '\n';
 }

@@ -4,6 +4,7 @@
 #include <cstring>
 #include <vector>
 #include <map>
+#include <iomanip>
 #include "account.h"
 #include "parser.h"
 
@@ -423,18 +424,10 @@ bool PriceCheck(const char *price) {
 double TransPrice(const char *price) {
     if (price == nullptr)return 0;
     double trans = 0;
-//    int i;
-//    for (i = 0; price[i] != '.' && price[i] != '\0'; ++i) {
-//        trans *= 10;
-//        trans += price[i] - '0';
-//    }
-//    if (price[i] == '.' && price[i + 1] != '\0') {
-//        trans += ((double) (price[++i] - '0')) / 10;
-//        if (price[i + 1] != '\0')trans += ((double) (price[++i] - '0')) / 100;
-//    }
     std::stringstream ss;
     ss.clear();
-    ss << price;
+    ss.setf(std::ios::fixed);
+    ss <<std::setprecision(2)<< price;
     ss >> trans;
     return trans;
 }

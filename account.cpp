@@ -11,6 +11,7 @@
 #include <fstream>
 #include <cstring>
 #include <map>
+#include <iomanip>
 
 extern std::vector<People *> Login;
 extern People *current_account;
@@ -277,18 +278,9 @@ void Manager::Buy(char *isbn, int quantity) {
     std::stringstream ss;
     std::string total_str;
     ss.clear();
-    ss << total;
+    ss.setf(std::ios::fixed);
+    ss << std::setprecision(2) << total;
     ss >> total_str;
-    int counter = 0;
-    for (counter = 0; counter < total_str.length(); ++counter) {
-        if (total_str[counter] == '.')break;
-    }
-    if (counter == total_str.length()) {
-        total_str += ".00";
-    } else if (counter == total_str.length() - 1) {
-        total_str += '0';
-    }
-    if (counter == total_str.length() - 2)total_str += '0';
     std::cout << total_str << std::endl;
     RecordAnEntry(total);
 }
@@ -655,18 +647,9 @@ void Employee::Buy(char *isbn, int quantity) {
     std::stringstream ss;
     std::string total_str;
     ss.clear();
-    ss << total;
+    ss.setf(std::ios::fixed);
+    ss << std::setprecision(2) << total;
     ss >> total_str;
-    int counter = 0;
-    for (counter = 0; counter < total_str.length(); ++counter) {
-        if (total_str[counter] == '.')break;
-    }
-    if (counter == total_str.length()) {
-        total_str += ".00";
-    } else if (counter == total_str.length() - 1) {
-        total_str += '0';
-    }
-    if (counter == total_str.length() - 2)total_str += '0';
     std::cout << total_str << std::endl;
     RecordAnEntry(total);
 
@@ -1013,18 +996,9 @@ void Customer::Buy(char *isbn, int quantity) {
     std::stringstream ss;
     std::string total_str;
     ss.clear();
-    ss << total;
+    ss.setf(std::ios::fixed);
+    ss << std::setprecision(2) << total;
     ss >> total_str;
-    int counter = 0;
-    for (counter = 0; counter < total_str.length(); ++counter) {
-        if (total_str[counter] == '.')break;
-    }
-    if (counter == total_str.length()) {
-        total_str += ".00";
-    } else if (counter == total_str.length() - 1) {
-        total_str += '0';
-    }
-    if (counter == total_str.length() - 2)total_str += '0';
     std::cout << total_str << std::endl;
     RecordAnEntry(total);
 
