@@ -397,6 +397,7 @@ bool KeywordCheck(const char *keyword) {
 
 bool QuantityCheck(const char *quantity) {
     //   检查是否是全部是数字,以及是否合法
+    if(quantity== nullptr)return false;
     if (strlen(quantity) > 10)return false;
     for (int i = 0; i < strlen(quantity); ++i) {
         if (!IsNum(quantity[i]))return false;

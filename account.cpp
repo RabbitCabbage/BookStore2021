@@ -274,7 +274,7 @@ void Manager::Buy(char *isbn, int quantity) {
     file.seekp(location);
     file.write(reinterpret_cast<char *>(&to_buy), sizeof(bookInfo));
     file.close();
-    selected_book[current_account] = to_buy;
+//    selected_book[current_account] = to_buy;
     std::stringstream ss;
     std::string total_str;
     ss.clear();
@@ -647,7 +647,7 @@ void Employee::Buy(char *isbn, int quantity) {
     file.seekp(location);
     file.write(reinterpret_cast<char *>(&to_buy), sizeof(bookInfo));
     file.close();
-    selected_book[current_account] = to_buy;
+//    selected_book[current_account] = to_buy;
     std::stringstream ss;
     std::string total_str;
     ss.clear();
@@ -1000,7 +1000,7 @@ void Customer::Buy(char *isbn, int quantity) {
     file.seekp(location);
     file.write(reinterpret_cast<char *>(&to_buy), sizeof(bookInfo));
     file.close();
-    selected_book[current_account] = to_buy;
+//    selected_book[current_account] = to_buy;
     std::stringstream ss;
     std::string total_str;
     ss.clear();

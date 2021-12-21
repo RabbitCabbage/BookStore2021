@@ -45,6 +45,7 @@ std::string ShowEntry(int num) {
     ss.setf(std::ios::fixed);
     ss << std::setprecision(2) << (-1.0) * expense;
     ss >> price_str;
+    if (price_str == "-0.00")price_str = "0.00";
     report += " - " + price_str;
     report += "\n";
     return report;
@@ -66,7 +67,7 @@ std::string ShowAllEntry() {
     ss.clear();
     price_str.clear();
     ss.setf(std::ios::fixed);
-    ss <<std::setprecision(2)<< income;
+    ss << std::setprecision(2) << income;
     ss >> price_str;
     report += "+ " + price_str;
     ss.clear();
@@ -74,6 +75,7 @@ std::string ShowAllEntry() {
     ss.setf(std::ios::fixed);
     ss << std::setprecision(2) << (-1.0) * expense;
     ss >> price_str;
+    if (price_str == "-0.00")price_str = "0.00";
     report += " - " + price_str;
     report += "\n";
     return report;
