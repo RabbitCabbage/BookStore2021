@@ -379,10 +379,6 @@ void Manager::Import(int quantity, double cost) {
     to_import.number += quantity;
     file.write(reinterpret_cast<char *>(&to_import), sizeof(bookInfo));
     file.close();
-    std::stringstream ss;
-    ss.setf(std::ios::fixed);
-    ss << std::setprecision(2) << cost;
-    ss >> cost;
     RecordAnEntry((-1.0) * cost);
     selected_book[current_account] = to_import;
     UpdateSelectedBook(to_import, to_import.ISBN);

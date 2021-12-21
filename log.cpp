@@ -7,20 +7,21 @@
 #include <sstream>
 #include <iomanip>
 
-std::fstream log_file;
 
 void RecordAnEntry(double price) {
-    log_file.open("FinanceRecord", std::ios::binary);
-    log_file.seekp(0,std::ios::end);
+    std::fstream log_file;
+    log_file.open("FinanceRecord");
+    log_file.seekp(0, std::ios::end);
     log_file.write(reinterpret_cast<char *>(&price), sizeof(double));
     log_file.close();
 }
 
 std::string ShowEntry(int num) {
+    std::fstream log_file;
     if (num == 0)return "\n";
     std::string report;
     double income = 0, expense = 0, sum;
-    log_file.open("FinanceRecord", std::ios::binary);
+    log_file.open("FinanceRecord");
     log_file.seekg(0, std::ios::end);
     int location = log_file.tellg();
     location -= num * sizeof(double);
@@ -54,9 +55,10 @@ std::string ShowEntry(int num) {
 }
 
 std::string ShowAllEntry() {
+    std::fstream log_file;
     std::string report;
     double expense = 0, income = 0, sum;
-    log_file.open("FinanceRecord", std::ios::binary);
+    log_file.open("FinanceRecord");
     log_file.seekg(0);
     while (log_file.peek() != EOF) {
         log_file.read(reinterpret_cast<char *>(&sum), sizeof(double));
