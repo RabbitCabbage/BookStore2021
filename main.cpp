@@ -19,9 +19,8 @@ int main() {
     while (running) {
         command = new char[1024];
         memset(command, '\0', 1024 * sizeof(char));
-        if (std::cin.eof())exit(0);
-        std::cin.getline(command, 1024);
-        CommandCarryOut(command, running);
+        if (std::cin.getline(command, 1024))CommandCarryOut(command, running);
+        else exit(0);
     }
     delete command;
     return 0;
