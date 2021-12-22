@@ -220,7 +220,7 @@ void BuyParser(char *command) {
 
 void SelectParser(char *command) {
     char *isbn = command;
-    if (isbn == nullptr) {
+    if (isbn == nullptr || strcmp(isbn, "\0") == 0) {
         InvalidReport();
         return;
     }
@@ -523,7 +523,7 @@ void RemoveQuotation(char *str) {
 }
 
 bool PassWordCheck(char *str) {
-    if(str==nullptr)return true;
+    if (str == nullptr)return true;
     for (int i = 0; i < strlen(str); ++i) {
         if (!(IsLetter(str[i]) || IsNum(str[i]) || str[i] == '_'))return false;
     }
