@@ -8,7 +8,7 @@
 #include "account.h"
 #include "parser.h"
 
-const char *delim = " ";
+const char *delim = " \0";
 extern std::map<People *, bookInfo> selected_book;
 extern People *current_account;
 extern std::vector<People *> Login;
@@ -54,7 +54,7 @@ void SuParser(char *command) {
         InvalidReport();
         return;
     }
-    char *passwd = strtok(nullptr, delim);
+    char *passwd = strtok(nullptr, "\0");
     if (idCheck(id) && PassWordCheck(passwd)) {
         current_account->Su(id, passwd);//tomdo 之后的current信息已经发生了变化，类型变换了
     } else InvalidReport();
@@ -165,41 +165,55 @@ void ShowParser(char *command) {
     if (strcmp(command, "\0") == 0)current_account->Show(isbn, name, author, keyword);
     else {
         char *invalid = strtok(command, "=");
-        if (strcmp(invalid, "-ISBN") == 0) {
-            isbn = strtok(nullptr, " ");
-            if (isbn == nullptr || !ISBNCheck(isbn)) {
+        while (invalid != nullptr) {
+            if (strcmp(invalid, "-ISBN") == 0) {
+                if (isbn != nullptr) {
+                    InvalidReport();
+                    return;
+                }
+                isbn = strtok(nullptr, " ");
+                if (isbn == nullptr || !ISBNCheck(isbn)) {
+                    InvalidReport();
+                    return;
+                }
+            } else if (strcmp(invalid, "-name") == 0) {
+                if (name != nullptr) {
+                    InvalidReport();
+                    return;
+                }
+                name = strtok(nullptr, " ");
+                RemoveQuotation(name);
+                if (name == nullptr || !NameCheck(name)) {
+                    InvalidReport();
+                    return;
+                }
+            } else if (strcmp(invalid, "-author") == 0) {
+                if (author != nullptr) {
+                    InvalidReport();
+                    return;
+                }
+                author = strtok(nullptr, " ");
+                RemoveQuotation(author);
+                if (author == nullptr || !NameCheck(author)) {
+                    InvalidReport();
+                    return;
+                }
+            } else if (strcmp(invalid, "-keyword") == 0) {
+                if (keyword != nullptr) {
+                    InvalidReport();
+                    return;
+                }
+                keyword = strtok(nullptr, " ");
+                RemoveQuotation(keyword);
+                if (keyword == nullptr) {
+                    InvalidReport();
+                    return;
+                }
+            } else {
                 InvalidReport();
                 return;
             }
-        } else if (strcmp(invalid, "-name") == 0) {
-            name = strtok(nullptr, " ");
-            RemoveQuotation(name);
-            if (name == nullptr || !NameCheck(name)) {
-                InvalidReport();
-                return;
-            }
-        } else if (strcmp(invalid, "-author") == 0) {
-            author = strtok(nullptr, " ");
-            RemoveQuotation(author);
-            if (author == nullptr || !NameCheck(author)) {
-                InvalidReport();
-                return;
-            }
-        } else if (strcmp(invalid, "-keyword") == 0) {
-            keyword = strtok(nullptr, " ");
-            RemoveQuotation(keyword);
-            if (keyword == nullptr || !KeywordCheck(keyword)) {
-                InvalidReport();
-                return;
-            }
-        } else {
-            InvalidReport();
-            return;
-        }
-        invalid = strtok(nullptr, "=");
-        if (invalid != nullptr) {
-            InvalidReport();
-            return;
+            invalid = strtok(nullptr, "=");
         }
         current_account->Show(isbn, name, author, keyword);
     }
@@ -207,7 +221,7 @@ void ShowParser(char *command) {
 
 void BuyParser(char *command) {
     char *isbn = strtok(command, delim);
-    char *quantity = strtok(nullptr, delim);
+    char *quantity = strtok(nullptr, "\0");
     if (isbn == nullptr || quantity == nullptr) {
         InvalidReport();
         return;
@@ -233,12 +247,20 @@ void ModifyParser(char *command) {
     char *invalid = strtok(command, "=");
     while (invalid != nullptr) {
         if (strcmp(invalid, "-ISBN") == 0) {
+            if (isbn != nullptr) {
+                InvalidReport();
+                return;
+            }
             isbn = strtok(nullptr, " ");
             if (isbn == nullptr || !ISBNCheck(isbn)) {
                 InvalidReport();
                 return;
             }
         } else if (strcmp(invalid, "-name") == 0) {
+            if (name != nullptr) {
+                InvalidReport();
+                return;
+            }
             name = strtok(nullptr, " ");
             RemoveQuotation(name);
             if (name == nullptr || !NameCheck(name)) {
@@ -246,6 +268,10 @@ void ModifyParser(char *command) {
                 return;
             }
         } else if (strcmp(invalid, "-author") == 0) {
+            if (author != nullptr) {
+                InvalidReport();
+                return;
+            }
             author = strtok(nullptr, " ");
             RemoveQuotation(author);
             if (author == nullptr || !NameCheck(author)) {
@@ -253,6 +279,10 @@ void ModifyParser(char *command) {
                 return;
             }
         } else if (strcmp(invalid, "-keyword") == 0) {
+            if (keyword != nullptr) {
+                InvalidReport();
+                return;
+            }
             keyword = strtok(nullptr, " ");
             RemoveQuotation(keyword);
             if (keyword == nullptr) {
@@ -260,6 +290,10 @@ void ModifyParser(char *command) {
                 return;
             }
         } else if (strcmp(invalid, "-price") == 0) {
+            if (price != nullptr) {
+                InvalidReport();
+                return;
+            }
             price = strtok(nullptr, delim);
             if (price == nullptr || !PriceCheck(price)) {
                 InvalidReport();
@@ -337,7 +371,7 @@ void ModifyParser(char *command) {
 
 void ImportParser(char *command) {
     char *quantity = strtok(command, delim);
-    char *total = strtok(nullptr, delim);
+    char *total = strtok(nullptr, "\0");
     if (quantity == nullptr || total == nullptr) {
         InvalidReport();
         return;
@@ -501,9 +535,12 @@ bool KeywordRepeated(const char *keyword) {
     strcpy(alt, keyword);
     char *token = strtok(alt, "|");
     while (token != nullptr) {
-        for (auto &ptr: parsed) {
-            if (strcmp(ptr, token) == 0)return true;
-            else parsed.push_back(token);
+        if (parsed.empty())parsed.push_back(token);
+        else {
+            for (auto &ptr: parsed) {
+                if (strcmp(ptr, token) == 0)return true;
+            }
+            parsed.push_back(token);
         }
         token = strtok(nullptr, "|");
     }
