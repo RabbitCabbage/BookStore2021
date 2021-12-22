@@ -523,6 +523,7 @@ void RemoveQuotation(char *str) {
 }
 
 bool PassWordCheck(char *str) {
+    if(str==nullptr)return true;
     for (int i = 0; i < strlen(str); ++i) {
         if (!(IsLetter(str[i]) || IsNum(str[i]) || str[i] == '_'))return false;
     }
