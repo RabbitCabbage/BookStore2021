@@ -67,4 +67,6 @@ void KeyWordParser(const char *keyword,int& num,char keys[][60]);
 bool KeywordRepeated(const char *keyword);
 
 void RemoveQuotation(char* str);
+
+bool PassWordCheck(char* passwd);
 #endif

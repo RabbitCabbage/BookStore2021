@@ -55,7 +55,7 @@ void SuParser(char *command) {
         return;
     }
     char *passwd = strtok(nullptr, delim);
-    if (idCheck(id) && idCheck(passwd)) {
+    if (idCheck(id) && PassWordCheck(passwd)) {
         current_account->Su(id, passwd);//tomdo 之后的current信息已经发生了变化，类型变换了
     } else InvalidReport();
 }
@@ -112,9 +112,9 @@ void RegisterParser(char *command) {
     char *id = strtok(command, delim);
     char *passwd = strtok(nullptr, delim);
     char *username = strtok(nullptr, "\0");
-    if(id==nullptr||passwd==nullptr||username==nullptr){
+    if (id == nullptr || passwd == nullptr || username == nullptr) {
         InvalidReport();
-        return ;
+        return;
     }
     if (UserNameCheck(username) && idCheck(id) && idCheck(passwd))current_account->Register(id, passwd, username);
     else InvalidReport();
@@ -123,12 +123,12 @@ void RegisterParser(char *command) {
 void PasswdParser(char *command) {
     char *id = strtok(command, delim);
     char *passwd1 = strtok(nullptr, delim);
-    if(id==nullptr||passwd1==nullptr){
+    if (id == nullptr || passwd1 == nullptr) {
         InvalidReport();
-        return ;
+        return;
     }
     char *passwd2 = strtok(nullptr, "\0");
-    if (idCheck(id) && idCheck(passwd1) && (idCheck(passwd2) || passwd2 == nullptr))
+    if (idCheck(id) && PassWordCheck(passwd1) && PassWordCheck(passwd2))
         current_account->Passwd(id, passwd1, passwd2);
     else InvalidReport();
 }
@@ -138,9 +138,9 @@ void UseraddParser(char *command) {
     char *passwd = strtok(nullptr, delim);
     char *priority = strtok(nullptr, delim);
     char *username = strtok(nullptr, "\0");
-    if(id==nullptr||passwd==nullptr||priority==nullptr||username==nullptr){
+    if (id == nullptr || passwd == nullptr || priority == nullptr || username == nullptr) {
         InvalidReport();
-        return ;
+        return;
     }
     if (UserNameCheck(username) && idCheck(id) && idCheck(passwd) && PriorityCheck(priority))
         current_account->Useradd(id, passwd, priority[0] - '0', username);
@@ -149,9 +149,9 @@ void UseraddParser(char *command) {
 
 void DeleteParser(char *command) {
     char *id = strtok(command, "\0");
-    if(id==nullptr){
+    if (id == nullptr) {
         InvalidReport();
-        return ;
+        return;
     }
     if (idCheck(id))current_account->Delete(id);
     else InvalidReport();
@@ -208,9 +208,9 @@ void ShowParser(char *command) {
 void BuyParser(char *command) {
     char *isbn = strtok(command, delim);
     char *quantity = strtok(nullptr, delim);
-    if(isbn==nullptr||quantity== nullptr){
+    if (isbn == nullptr || quantity == nullptr) {
         InvalidReport();
-        return ;
+        return;
     }
     if (ISBNCheck(isbn) && QuantityCheck(quantity)) {
         int quan = TransQuantity(quantity);
@@ -220,7 +220,7 @@ void BuyParser(char *command) {
 
 void SelectParser(char *command) {
     char *isbn = command;
-    if(isbn==nullptr){
+    if (isbn == nullptr) {
         InvalidReport();
         return;
     }
@@ -338,7 +338,7 @@ void ModifyParser(char *command) {
 void ImportParser(char *command) {
     char *quantity = strtok(command, delim);
     char *total = strtok(nullptr, delim);
-    if(quantity==nullptr||total==nullptr){
+    if (quantity == nullptr || total == nullptr) {
         InvalidReport();
         return;
     }
@@ -520,4 +520,12 @@ void RemoveQuotation(char *str) {
         }
         str[len - 1] = '\0';
     }
+}
+
+bool PassWordCheck(char *str) {
+    for (int i = 0; i < strlen(str); ++i) {
+        if (!(IsLetter(str[i]) || IsNum(str[i]) || str[i] == '_'))return false;
+    }
+    if (strlen(str) > 30)return false;
+    return true;
 }
