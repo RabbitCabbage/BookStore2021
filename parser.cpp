@@ -54,7 +54,7 @@ void SuParser(char *command) {
         InvalidReport();
         return;
     }
-    char *passwd = strtok(nullptr, "\0");
+    char *passwd = strtok(nullptr, delim);
     if (idCheck(id) && PassWordCheck(passwd)) {
         current_account->Su(id, passwd);//tomdo 之后的current信息已经发生了变化，类型变换了
     } else InvalidReport();
@@ -208,7 +208,7 @@ void ShowParser(char *command) {
 
 void BuyParser(char *command) {
     char *isbn = strtok(command, delim);
-    char *quantity = strtok(nullptr, "\0");
+    char *quantity = strtok(nullptr,delim);
     if (isbn == nullptr || quantity == nullptr) {
         InvalidReport();
         return;
@@ -338,7 +338,7 @@ void ModifyParser(char *command) {
 
 void ImportParser(char *command) {
     char *quantity = strtok(command, delim);
-    char *total = strtok(nullptr, "\0");
+    char *total = strtok(nullptr, delim);
     if (quantity == nullptr || total == nullptr) {
         InvalidReport();
         return;
