@@ -50,6 +50,10 @@ int SkipWhiteSpace(const char *command, int &index) {
 
 void SuParser(char *command) {
     char *id = strtok(command, delim);
+    if (id == nullptr) {
+        InvalidReport();
+        return;
+    }
     char *passwd = strtok(nullptr, delim);
     if (idCheck(id) && idCheck(passwd)) {
         current_account->Su(id, passwd);//tomdo 之后的current信息已经发生了变化，类型变换了
@@ -108,6 +112,10 @@ void RegisterParser(char *command) {
     char *id = strtok(command, delim);
     char *passwd = strtok(nullptr, delim);
     char *username = strtok(nullptr, "\0");
+    if(id==nullptr||passwd==nullptr||username==nullptr){
+        InvalidReport();
+        return ;
+    }
     if (UserNameCheck(username) && idCheck(id) && idCheck(passwd))current_account->Register(id, passwd, username);
     else InvalidReport();
 }
@@ -115,6 +123,10 @@ void RegisterParser(char *command) {
 void PasswdParser(char *command) {
     char *id = strtok(command, delim);
     char *passwd1 = strtok(nullptr, delim);
+    if(id==nullptr||passwd1==nullptr){
+        InvalidReport();
+        return ;
+    }
     char *passwd2 = strtok(nullptr, "\0");
     if (idCheck(id) && idCheck(passwd1) && (idCheck(passwd2) || passwd2 == nullptr))
         current_account->Passwd(id, passwd1, passwd2);
@@ -126,6 +138,10 @@ void UseraddParser(char *command) {
     char *passwd = strtok(nullptr, delim);
     char *priority = strtok(nullptr, delim);
     char *username = strtok(nullptr, "\0");
+    if(id==nullptr||passwd==nullptr||priority==nullptr||username==nullptr){
+        InvalidReport();
+        return ;
+    }
     if (UserNameCheck(username) && idCheck(id) && idCheck(passwd) && PriorityCheck(priority))
         current_account->Useradd(id, passwd, priority[0] - '0', username);
     else InvalidReport();
@@ -133,6 +149,10 @@ void UseraddParser(char *command) {
 
 void DeleteParser(char *command) {
     char *id = strtok(command, "\0");
+    if(id==nullptr){
+        InvalidReport();
+        return ;
+    }
     if (idCheck(id))current_account->Delete(id);
     else InvalidReport();
 }
@@ -188,6 +208,10 @@ void ShowParser(char *command) {
 void BuyParser(char *command) {
     char *isbn = strtok(command, delim);
     char *quantity = strtok(nullptr, delim);
+    if(isbn==nullptr||quantity== nullptr){
+        InvalidReport();
+        return ;
+    }
     if (ISBNCheck(isbn) && QuantityCheck(quantity)) {
         int quan = TransQuantity(quantity);
         current_account->Buy(isbn, quan);
@@ -196,6 +220,10 @@ void BuyParser(char *command) {
 
 void SelectParser(char *command) {
     char *isbn = command;
+    if(isbn==nullptr){
+        InvalidReport();
+        return;
+    }
     if (ISBNCheck(isbn))current_account->Select(isbn);
     else InvalidReport();
 }
@@ -310,6 +338,10 @@ void ModifyParser(char *command) {
 void ImportParser(char *command) {
     char *quantity = strtok(command, delim);
     char *total = strtok(nullptr, delim);
+    if(quantity==nullptr||total==nullptr){
+        InvalidReport();
+        return;
+    }
     if (QuantityCheck(quantity) && PriceCheck(total)) {
         double total_cost = TransPrice(total);
         int quan = TransQuantity(quantity);
@@ -397,7 +429,7 @@ bool KeywordCheck(const char *keyword) {
 
 bool QuantityCheck(const char *quantity) {
     //   检查是否是全部是数字,以及是否合法
-    if(quantity== nullptr)return false;
+    if (quantity == nullptr)return false;
     if (strlen(quantity) > 10)return false;
     for (int i = 0; i < strlen(quantity); ++i) {
         if (!IsNum(quantity[i]))return false;
@@ -428,7 +460,7 @@ double TransPrice(const char *price) {
     std::stringstream ss;
     ss.clear();
     ss.setf(std::ios::fixed);
-    ss <<std::setprecision(2)<< price;
+    ss << std::setprecision(2) << price;
     ss >> trans;
     return trans;
 }
