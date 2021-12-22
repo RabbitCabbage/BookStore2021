@@ -167,20 +167,12 @@ void ShowParser(char *command) {
         char *invalid = strtok(command, "=");
         while (invalid != nullptr) {
             if (strcmp(invalid, "-ISBN") == 0) {
-                if (isbn != nullptr) {
-                    InvalidReport();
-                    return;
-                }
                 isbn = strtok(nullptr, " ");
                 if (isbn == nullptr || !ISBNCheck(isbn)) {
                     InvalidReport();
                     return;
                 }
             } else if (strcmp(invalid, "-name") == 0) {
-                if (name != nullptr) {
-                    InvalidReport();
-                    return;
-                }
                 name = strtok(nullptr, " ");
                 RemoveQuotation(name);
                 if (name == nullptr || !NameCheck(name)) {
@@ -188,10 +180,6 @@ void ShowParser(char *command) {
                     return;
                 }
             } else if (strcmp(invalid, "-author") == 0) {
-                if (author != nullptr) {
-                    InvalidReport();
-                    return;
-                }
                 author = strtok(nullptr, " ");
                 RemoveQuotation(author);
                 if (author == nullptr || !NameCheck(author)) {
@@ -199,10 +187,6 @@ void ShowParser(char *command) {
                     return;
                 }
             } else if (strcmp(invalid, "-keyword") == 0) {
-                if (keyword != nullptr) {
-                    InvalidReport();
-                    return;
-                }
                 keyword = strtok(nullptr, " ");
                 RemoveQuotation(keyword);
                 if (keyword == nullptr) {
@@ -247,20 +231,12 @@ void ModifyParser(char *command) {
     char *invalid = strtok(command, "=");
     while (invalid != nullptr) {
         if (strcmp(invalid, "-ISBN") == 0) {
-            if (isbn != nullptr) {
-                InvalidReport();
-                return;
-            }
             isbn = strtok(nullptr, " ");
             if (isbn == nullptr || !ISBNCheck(isbn)) {
                 InvalidReport();
                 return;
             }
         } else if (strcmp(invalid, "-name") == 0) {
-            if (name != nullptr) {
-                InvalidReport();
-                return;
-            }
             name = strtok(nullptr, " ");
             RemoveQuotation(name);
             if (name == nullptr || !NameCheck(name)) {
@@ -268,10 +244,6 @@ void ModifyParser(char *command) {
                 return;
             }
         } else if (strcmp(invalid, "-author") == 0) {
-            if (author != nullptr) {
-                InvalidReport();
-                return;
-            }
             author = strtok(nullptr, " ");
             RemoveQuotation(author);
             if (author == nullptr || !NameCheck(author)) {
@@ -279,10 +251,6 @@ void ModifyParser(char *command) {
                 return;
             }
         } else if (strcmp(invalid, "-keyword") == 0) {
-            if (keyword != nullptr) {
-                InvalidReport();
-                return;
-            }
             keyword = strtok(nullptr, " ");
             RemoveQuotation(keyword);
             if (keyword == nullptr) {
@@ -290,10 +258,6 @@ void ModifyParser(char *command) {
                 return;
             }
         } else if (strcmp(invalid, "-price") == 0) {
-            if (price != nullptr) {
-                InvalidReport();
-                return;
-            }
             price = strtok(nullptr, delim);
             if (price == nullptr || !PriceCheck(price)) {
                 InvalidReport();
