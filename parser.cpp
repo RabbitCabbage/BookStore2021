@@ -8,7 +8,7 @@
 #include "account.h"
 #include "parser.h"
 
-const char *delim = " \0";
+const char *delim = " ";
 extern std::map<People *, bookInfo> selected_book;
 extern People *current_account;
 extern std::vector<People *> Login;
@@ -165,39 +165,42 @@ void ShowParser(char *command) {
     if (strcmp(command, "\0") == 0)current_account->Show(isbn, name, author, keyword);
     else {
         char *invalid = strtok(command, "=");
-        while (invalid != nullptr) {
-            if (strcmp(invalid, "-ISBN") == 0) {
-                isbn = strtok(nullptr, " ");
-                if (isbn == nullptr || !ISBNCheck(isbn)) {
-                    InvalidReport();
-                    return;
-                }
-            } else if (strcmp(invalid, "-name") == 0) {
-                name = strtok(nullptr, " ");
-                RemoveQuotation(name);
-                if (name == nullptr || !NameCheck(name)) {
-                    InvalidReport();
-                    return;
-                }
-            } else if (strcmp(invalid, "-author") == 0) {
-                author = strtok(nullptr, " ");
-                RemoveQuotation(author);
-                if (author == nullptr || !NameCheck(author)) {
-                    InvalidReport();
-                    return;
-                }
-            } else if (strcmp(invalid, "-keyword") == 0) {
-                keyword = strtok(nullptr, " ");
-                RemoveQuotation(keyword);
-                if (keyword == nullptr) {
-                    InvalidReport();
-                    return;
-                }
-            } else {
+
+        if (strcmp(invalid, "-ISBN") == 0) {
+            isbn = strtok(nullptr, " ");
+            if (isbn == nullptr || !ISBNCheck(isbn)) {
                 InvalidReport();
                 return;
             }
-            invalid = strtok(nullptr, "=");
+        } else if (strcmp(invalid, "-name") == 0) {
+            name = strtok(nullptr, " ");
+            RemoveQuotation(name);
+            if (name == nullptr || !NameCheck(name)) {
+                InvalidReport();
+                return;
+            }
+        } else if (strcmp(invalid, "-author") == 0) {
+            author = strtok(nullptr, " ");
+            RemoveQuotation(author);
+            if (author == nullptr || !NameCheck(author)) {
+                InvalidReport();
+                return;
+            }
+        } else if (strcmp(invalid, "-keyword") == 0) {
+            keyword = strtok(nullptr, " ");
+            RemoveQuotation(keyword);
+            if (keyword == nullptr || !KeywordCheck(keyword)) {
+                InvalidReport();
+                return;
+            }
+        } else {
+            InvalidReport();
+            return;
+        }
+        invalid = strtok(nullptr, "=");
+        if (invalid != nullptr) {
+            InvalidReport();
+            return;
         }
         current_account->Show(isbn, name, author, keyword);
     }
@@ -253,7 +256,7 @@ void ModifyParser(char *command) {
         } else if (strcmp(invalid, "-keyword") == 0) {
             keyword = strtok(nullptr, " ");
             RemoveQuotation(keyword);
-            if (keyword == nullptr) {
+            if (keyword == nullptr || !KeywordCheck(keyword)) {
                 InvalidReport();
                 return;
             }
