@@ -440,7 +440,7 @@ bool KeywordCheck(const char *keyword) {
     for (int i = 0; i < strlen(keyword); ++i) {
         if ((!IsVisibal(keyword[i])) || keyword[i] == '\"')return false;
     }
-    if(keyword[strlen(keyword)-1]=='|')return false;
+    if(keyword[strlen(keyword)-1]=='|'||keyword[0]=='|')return false;
     return true;
 }
 
