@@ -57,7 +57,7 @@ void Conduct(bool &running, char *keyword, char *command) {
         running = false;
         return;
     } else if (strcmp(keyword, "su") == 0) { SuParser(command); }
-    else if (strcmp(keyword, "logout") == 0) { Logout(); }
+    else if (strcmp(keyword, "logout") == 0) { Logout(command); }
     else if (strcmp(keyword, "register") == 0) { RegisterParser(command); }
     else if (strcmp(keyword, "passwd") == 0) { PasswdParser(command); }
     else if (strcmp(keyword, "useradd") == 0) { UseraddParser(command); }

@@ -18,9 +18,9 @@ int main() {
     char *command;
     while (running) {
         command = new char[1030];
-        memset(command, '\0', 1024 * sizeof(char));
+        memset(command, '\0', 1030 * sizeof(char));
         if (std::cin.getline(command, 1030)) {
-            if (strlen(command) > 1024)InvalidReport();
+            if (strlen(command) > 1024)std::cout << "Invalid\n";
             else CommandCarryOut(command, running);
         } else exit(0);
     }

@@ -14,7 +14,7 @@ bool KeywordExamine(const char *keyword);
 
 void SuParser(char *command);//以栈来维护，登入账号推入栈
 
-void Logout();//退出栈
+void Logout(char* command);//退出栈
 
 void RegisterParser(char *command);//以块链维护账户信息
 

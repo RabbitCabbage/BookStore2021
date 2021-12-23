@@ -65,7 +65,11 @@ void SuParser(char *command) {
     } else InvalidReport();
 }
 
-void Logout() {
+void Logout(char* command) {
+    if(command!="\0"){
+        InvalidReport();
+        return ;
+    }
     if (Login.empty())InvalidReport();
     else {
         Login.pop_back();
