@@ -20,7 +20,10 @@ int main() {
         command = new char[1030];
         memset(command, '\0', 1030 * sizeof(char));
         if (std::cin.getline(command, 1030)) {
-            if (strlen(command) > 1024)std::cout << "Invalid\n";
+            if (strlen(command) > 1024){
+                std::cout << "Invalid\n";
+                std::cin.ignore();
+            }
             else CommandCarryOut(command, running);
         } else exit(0);
     }
