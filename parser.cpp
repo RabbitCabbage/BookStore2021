@@ -271,101 +271,66 @@ void SelectParser(char *command) {
 void ModifyParser(char *command) {
     char *isbn = nullptr, *name = nullptr, *author = nullptr, *keyword = nullptr, *price = nullptr;
     char *invalid = strtok(command, "=");
+    bool isbn_modified = false, name_modified = false, author_modified = false, keyword_modified = false, price_modified = false;
     while (invalid != nullptr) {
         if (strcmp(invalid, "-ISBN") == 0) {
+            if (isbn_modified) {
+                InvalidReport();
+                return;
+            }
             isbn = strtok(nullptr, " ");
             if (isbn == nullptr || !ISBNCheck(isbn)) {
                 InvalidReport();
                 return;
             }
+            isbn_modified = true;
         } else if (strcmp(invalid, "-name") == 0) {
-            name = strtok(nullptr, " ");
-            RemoveQuotation(name);
-            if (name == nullptr || !NameCheck(name)) {
+            if (name_modified) {
                 InvalidReport();
                 return;
             }
+            name = strtok(nullptr, " ");
+            RemoveQuotation(name);
+            if (name == nullptr || !NameCheck(name)) {//""的检查在后面了
+                InvalidReport();
+                return;
+            }
+            name_modified = true;
         } else if (strcmp(invalid, "-author") == 0) {
+            if (author_modified) {
+                InvalidReport();
+                return;
+            }
             author = strtok(nullptr, " ");
             RemoveQuotation(author);
             if (author == nullptr || !NameCheck(author)) {
                 InvalidReport();
                 return;
             }
+            author_modified = true;
         } else if (strcmp(invalid, "-keyword") == 0) {
+            if (keyword_modified) {
+                InvalidReport();
+                return;
+            }
             keyword = strtok(nullptr, " ");
             RemoveQuotation(keyword);
             if (keyword == nullptr || !KeywordCheck(keyword)) {
                 InvalidReport();
                 return;
             }
+            keyword_modified = true;
         } else if (strcmp(invalid, "-price") == 0) {
+            if (price_modified) {
+                InvalidReport();
+                return;
+            }
             price = strtok(nullptr, delim);
             if (price == nullptr || !PriceCheck(price)) {
                 InvalidReport();
                 return;
             }
-        } else if (strcmp(invalid, "| -ISBN") == 0) {
-            if (isbn != nullptr) {
-                InvalidReport();
-                return;
-            } else {
-                isbn = strtok(nullptr, " ");
-                if (isbn == nullptr || !ISBNCheck(isbn)) {
-                    InvalidReport();
-                    return;
-                }
-            }
-        } else if (strcmp(invalid, "| -name") == 0) {
-            if (name != nullptr) {
-                InvalidReport();
-                return;
-            } else {
-                name = strtok(nullptr, " ");
-                RemoveQuotation(name);
-                if (name == nullptr || !NameCheck(name)) {
-                    InvalidReport();
-                    return;
-                }
-            }
-        } else if (strcmp(invalid, "| -author") == 0) {
-            if (author != nullptr) {
-                InvalidReport();
-                return;
-            } else {
-                author = strtok(nullptr, " ");
-                RemoveQuotation(author);
-                if (author == nullptr || !NameCheck(author)) {
-                    InvalidReport();
-                    return;
-                }
-            }
-        } else if (strcmp(invalid, "| -keyword") == 0) {
-            if (keyword != nullptr) {
-                InvalidReport();
-                return;
-            } else {
-                keyword = strtok(nullptr, " ");
-                RemoveQuotation(keyword);
-                if (keyword == nullptr || !KeywordCheck(keyword)) {
-                    InvalidReport();
-                    return;
-                }
-            }
-        } else if (strcmp(invalid, "| -price") == 0) {
-            if (price != nullptr) {
-                InvalidReport();
-                return;
-            } else {
-                price = strtok(nullptr, delim);
-                if (price == nullptr || !PriceCheck(price)) {
-                    InvalidReport();
-                    return;
-                }
-            }
-        } else {
-            InvalidReport();
-            return;
+            price_modified = true;
         }
         invalid = strtok(nullptr, "=");
     }
@@ -545,6 +510,9 @@ bool KeywordRepeated(const char *keyword) {
     std::vector<char *> parsed;
     strcpy(alt, keyword);
     char *token = strtok(alt, "|");
+    if (token == nullptr) {
+        return true;
+    }
     while (token != nullptr) {
         if (parsed.empty())parsed.push_back(token);
         else {

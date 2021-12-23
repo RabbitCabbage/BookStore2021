@@ -59,7 +59,10 @@ void Manager::Su(char *id, char *pass_word) {
             if (tmp.rank == 0)current_account = new Visitor;
             else if (tmp.rank == 1)current_account = new Customer;
             else if (tmp.rank == 3)current_account = new Employee;
-            else if (tmp.rank == 7)current_account = new Manager;
+            else if (tmp.rank == 7) {
+                InvalidReport();
+                return ;
+            }
             current_account->InputInfo(tmp);
             Login.push_back(current_account);
 
@@ -332,16 +335,28 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
         }
     }
     if (name != nullptr) {
+        if(strcmp(name,"\0")==0){
+            InvalidReport();
+            return;
+        }
         name_book_list.DeletePair(to_modify.name, location);
         strcpy(to_modify.name, name);
         name_book_list.InsertPair(name, location);
     }
     if (author != nullptr) {
+        if(strcmp(author,"\0")==0){
+            InvalidReport();
+            return ;
+        }
         author_book_list.DeletePair(to_modify.author, location);
         strcpy(to_modify.author, author);
         author_book_list.InsertPair(author, location);
     }
     if (keyword != nullptr) {
+        if(strcmp(keyword,"\0")==0){
+            InvalidReport();
+            return ;
+        }
         if (KeywordRepeated(keyword)) {
             InvalidReport();
             return;
@@ -707,16 +722,28 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
         }
     }
     if (name != nullptr) {
+        if(strcmp(name,"\0")==0){
+            InvalidReport();
+            return;
+        }
         name_book_list.DeletePair(to_modify.name, location);
         strcpy(to_modify.name, name);
         name_book_list.InsertPair(name, location);
     }
     if (author != nullptr) {
+        if(strcmp(author,"\0")==0){
+            InvalidReport();
+            return ;
+        }
         author_book_list.DeletePair(to_modify.author, location);
         strcpy(to_modify.author, author);
         author_book_list.InsertPair(author, location);
     }
     if (keyword != nullptr) {
+        if(strcmp(keyword,"\0")==0){
+            InvalidReport();
+            return ;
+        }
         if (KeywordRepeated(keyword)) {
             InvalidReport();
             return;
