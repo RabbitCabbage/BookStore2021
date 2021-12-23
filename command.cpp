@@ -53,6 +53,10 @@ void CommandCarryOut(char *command, bool &running) {
 
 void Conduct(bool &running, char *keyword, char *command) {
     if (strcmp(keyword, "quit") == 0 || strcmp(keyword, "exit") == 0) {
+        if(command!="\0"){
+            InvalidReport();
+            return ;
+        }
         delete current_account;
         running = false;
         return;
