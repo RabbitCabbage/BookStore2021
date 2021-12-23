@@ -331,6 +331,9 @@ void ModifyParser(char *command) {
                 return;
             }
             price_modified = true;
+        }else{
+            InvalidReport();
+            return ;
         }
         invalid = strtok(nullptr, "=");
     }
