@@ -62,7 +62,7 @@ bool IsLetter(char a);
 
 bool IsVisibal(char a);
 
-void KeyWordParser(const char *keyword,int& num,char keys[][60]);
+void KeyWordParser(const char *keyword,int& num,char keys[][65]);
 
 bool KeywordRepeated(const char *keyword);
 

@@ -488,7 +488,7 @@ long long TransQuantity(const char *quantity) {
     return trans;
 }
 
-void KeyWordParser(const char *keyword_, int &num, char keys[][60]) {
+void KeyWordParser(const char *keyword_, int &num, char keys[][65]) {
     char keyword[65];
     strcpy(keyword, keyword_);
 //     std::vector<char *> keys;

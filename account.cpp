@@ -169,7 +169,7 @@ void Manager::Show(char *isbn, char *name, char *author, char *keyword) {
     std::fstream file;
     if (isbn == nullptr && name == nullptr && author == nullptr && keyword != nullptr) {
         int num;
-        char keys[60][60];
+        char keys[65][65];
         KeyWordParser(keyword, num, keys);
         if (num > 0) {
             InvalidReport();
@@ -362,7 +362,7 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
             return;
         }
         int num;
-        char keys[60][60];
+        char keys[65][65];
         KeyWordParser(keyword, num, keys);
         //先把原来的关键词键值对都删掉，然后再把新的关键词键值对加入进去
         for (int i = 0; strcmp(to_modify.keyword[i], "\0") != 0; ++i) {
@@ -555,7 +555,7 @@ void Employee::Show(char *isbn, char *name, char *author, char *keyword) {
     std::fstream file;
     if (isbn == nullptr && name == nullptr && author == nullptr && keyword != nullptr) {
         int num;
-        char keys[60][60];
+        char keys[65][65];
         KeyWordParser(keyword, num, keys);
         if (num > 0) {
             InvalidReport();
@@ -749,7 +749,7 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
             return;
         }
         int num;
-        char keys[60][60];
+        char keys[65][65];
         KeyWordParser(keyword, num, keys);
         //先把原来的关键词键值对都删掉，然后再把新的关键词键值对加入进去
         for (int i = 0; strcmp(to_modify.keyword[i], "\0") != 0; ++i) {
@@ -925,7 +925,7 @@ void Customer::Show(char *isbn, char *name, char *author, char *keyword) {
     std::fstream file;
     if (isbn == nullptr && name == nullptr && author == nullptr && keyword != nullptr) {
         int num;
-        char keys[60][60];
+        char keys[65][65];
         KeyWordParser(keyword, num, keys);
         if (num > 0) {
             InvalidReport();
