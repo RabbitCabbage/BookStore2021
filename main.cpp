@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <string>
+#include <sstream>
 #include "command.h"
 #include "blocklist.h"
 
@@ -17,14 +19,18 @@ int main() {
     bool running = true;
     char *command;
     while (running) {
-        command = new char[1030];
-        memset(command, '\0', 1030 * sizeof(char));
-        if (std::cin.getline(command, 1030)) {
-            if (strlen(command) > 1024){
-                std::cout << "Invalid\n";
-                std::cin.ignore();
+        std::string s;
+        if (getline(std::cin, s)) {
+            if (s.length() > 1024)std::cout << "Invalid\n";
+            else {
+                command = new char[1025];
+                memset(command, '\0', 1025 * sizeof(char));
+                std::stringstream ss;
+                ss.clear();
+                ss.str(s);
+                ss >> command;
+                CommandCarryOut(command, running);
             }
-            else CommandCarryOut(command, running);
         } else exit(0);
     }
     delete command;
