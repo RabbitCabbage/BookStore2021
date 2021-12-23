@@ -204,21 +204,21 @@ void ShowParser(char *command) {
         } else if (strcmp(invalid, "-name") == 0) {
             name = strtok(nullptr, " ");
             RemoveQuotation(name);
-            if (name == nullptr || !NameCheck(name)) {
+            if (name == nullptr || !NameCheck(name) || strcmp(name, "\0") == 0) {
                 InvalidReport();
                 return;
             }
         } else if (strcmp(invalid, "-author") == 0) {
             author = strtok(nullptr, " ");
             RemoveQuotation(author);
-            if (author == nullptr || !NameCheck(author)) {
+            if (author == nullptr || !NameCheck(author) || strcmp(author, "\0") == 0) {
                 InvalidReport();
                 return;
             }
         } else if (strcmp(invalid, "-keyword") == 0) {
             keyword = strtok(nullptr, " ");
             RemoveQuotation(keyword);
-            if (keyword == nullptr || !KeywordCheck(keyword)) {
+            if (keyword == nullptr || !KeywordCheck(keyword) || strcmp(keyword, "\0") == 0) {
                 InvalidReport();
                 return;
             }
@@ -331,9 +331,9 @@ void ModifyParser(char *command) {
                 return;
             }
             price_modified = true;
-        }else{
+        } else {
             InvalidReport();
-            return ;
+            return;
         }
         invalid = strtok(nullptr, "=");
     }
