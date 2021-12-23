@@ -61,7 +61,7 @@ void Manager::Su(char *id, char *pass_word) {
             else if (tmp.rank == 3)current_account = new Employee;
             else if (tmp.rank == 7) {
                 InvalidReport();
-                return ;
+                return;
             }
             current_account->InputInfo(tmp);
             Login.push_back(current_account);
@@ -171,7 +171,7 @@ void Manager::Show(char *isbn, char *name, char *author, char *keyword) {
         int num;
         char keys[65][65];
         KeyWordParser(keyword, num, keys);
-        if (num > 0) {
+        if (num > 0 || num == -1) {
             InvalidReport();
             return;
         }
@@ -335,7 +335,7 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
         }
     }
     if (name != nullptr) {
-        if(strcmp(name,"\0")==0){
+        if (strcmp(name, "\0") == 0) {
             InvalidReport();
             return;
         }
@@ -344,18 +344,18 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
         name_book_list.InsertPair(name, location);
     }
     if (author != nullptr) {
-        if(strcmp(author,"\0")==0){
+        if (strcmp(author, "\0") == 0) {
             InvalidReport();
-            return ;
+            return;
         }
         author_book_list.DeletePair(to_modify.author, location);
         strcpy(to_modify.author, author);
         author_book_list.InsertPair(author, location);
     }
     if (keyword != nullptr) {
-        if(strcmp(keyword,"\0")==0){
+        if (strcmp(keyword, "\0") == 0) {
             InvalidReport();
-            return ;
+            return;
         }
         if (KeywordRepeated(keyword)) {
             InvalidReport();
@@ -364,6 +364,10 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
         int num;
         char keys[65][65];
         KeyWordParser(keyword, num, keys);
+        if (num == -1) {
+            InvalidReport();
+            return;
+        }
         //先把原来的关键词键值对都删掉，然后再把新的关键词键值对加入进去
         for (int i = 0; strcmp(to_modify.keyword[i], "\0") != 0; ++i) {
             keyword_book_list.DeletePair(to_modify.keyword[i], location);
@@ -557,7 +561,7 @@ void Employee::Show(char *isbn, char *name, char *author, char *keyword) {
         int num;
         char keys[65][65];
         KeyWordParser(keyword, num, keys);
-        if (num > 0) {
+        if (num > 0 || num == -1) {
             InvalidReport();
             return;
         }
@@ -722,7 +726,7 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
         }
     }
     if (name != nullptr) {
-        if(strcmp(name,"\0")==0){
+        if (strcmp(name, "\0") == 0) {
             InvalidReport();
             return;
         }
@@ -731,18 +735,18 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
         name_book_list.InsertPair(name, location);
     }
     if (author != nullptr) {
-        if(strcmp(author,"\0")==0){
+        if (strcmp(author, "\0") == 0) {
             InvalidReport();
-            return ;
+            return;
         }
         author_book_list.DeletePair(to_modify.author, location);
         strcpy(to_modify.author, author);
         author_book_list.InsertPair(author, location);
     }
     if (keyword != nullptr) {
-        if(strcmp(keyword,"\0")==0){
+        if (strcmp(keyword, "\0") == 0) {
             InvalidReport();
-            return ;
+            return;
         }
         if (KeywordRepeated(keyword)) {
             InvalidReport();
@@ -752,6 +756,10 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
         char keys[65][65];
         KeyWordParser(keyword, num, keys);
         //先把原来的关键词键值对都删掉，然后再把新的关键词键值对加入进去
+        if (num == -1) {
+            InvalidReport();
+            return;
+        }
         for (int i = 0; strcmp(to_modify.keyword[i], "\0") != 0; ++i) {
             keyword_book_list.DeletePair(to_modify.keyword[i], location);
             memset(to_modify.keyword[i], '\0', sizeof(to_modify.keyword[i]));
@@ -927,7 +935,7 @@ void Customer::Show(char *isbn, char *name, char *author, char *keyword) {
         int num;
         char keys[65][65];
         KeyWordParser(keyword, num, keys);
-        if (num > 0) {
+        if (num > 0 || num == -1) {
             InvalidReport();
             return;
         }
