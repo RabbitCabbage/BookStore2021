@@ -194,7 +194,10 @@ void ShowParser(char *command) {
     if (strcmp(command, "\0") == 0)current_account->Show(isbn, name, author, keyword);
     else {
         char *invalid = strtok(command, "=");
-
+        if (invalid == nullptr) {
+            InvalidReport();
+            return;
+        }
         if (strcmp(invalid, "-ISBN") == 0) {
             isbn = strtok(nullptr, " ");
             if (isbn == nullptr || !ISBNCheck(isbn)) {
