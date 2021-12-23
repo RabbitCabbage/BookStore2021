@@ -17,10 +17,12 @@ int main() {
     bool running = true;
     char *command;
     while (running) {
-        command = new char[1024];
+        command = new char[1030];
         memset(command, '\0', 1024 * sizeof(char));
-        if (std::cin.getline(command, 1024))CommandCarryOut(command, running);
-        else exit(0);
+        if (std::cin.getline(command, 1024)) {
+            if (strlen(command) > 1024)InvalidReport();
+            else CommandCarryOut(command, running);
+        } else exit(0);
     }
     delete command;
     return 0;
