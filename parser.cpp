@@ -500,6 +500,9 @@ void KeyWordParser(const char *keyword_, int &num, char keys[][65]) {
 //    }
     num = 0;
     char *token = strtok(keyword, "|");
+    if(token==nullptr){
+        return;
+    }
     strcpy(keys[num], token);
     while (token != nullptr) {
         token = strtok(nullptr, "|");

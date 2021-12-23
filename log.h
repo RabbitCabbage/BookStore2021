@@ -6,6 +6,8 @@
 #define LOG_H
 
 #include <string>
+#include "account.h"
+#include "book.h"
 
 void RecordAnEntry(double price);
 

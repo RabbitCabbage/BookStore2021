@@ -6,7 +6,10 @@
 #include <fstream>
 #include <sstream>
 #include <iomanip>
+#include <map>
 
+extern People *current_account;
+extern std::map<People *, bookInfo> selected_book;
 
 void RecordAnEntry(double price) {
     std::fstream log_file;
