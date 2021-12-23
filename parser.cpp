@@ -55,6 +55,11 @@ void SuParser(char *command) {
         return;
     }
     char *passwd = strtok(nullptr, delim);
+    char *invalid = strtok(nullptr, "\0");
+    if (invalid != nullptr) {
+        InvalidReport();
+        return;
+    }
     if (idCheck(id) && PassWordCheck(passwd)) {
         current_account->Su(id, passwd);//tomdo 之后的current信息已经发生了变化，类型变换了
     } else InvalidReport();
@@ -112,6 +117,11 @@ void RegisterParser(char *command) {
     char *id = strtok(command, delim);
     char *passwd = strtok(nullptr, delim);
     char *username = strtok(nullptr, "\0");
+    char *invalid = strtok(nullptr, "\0");
+    if (invalid != nullptr) {
+        InvalidReport();
+        return;
+    }
     if (id == nullptr || passwd == nullptr || username == nullptr) {
         InvalidReport();
         return;
@@ -128,6 +138,11 @@ void PasswdParser(char *command) {
         return;
     }
     char *passwd2 = strtok(nullptr, "\0");
+    char *invalid = strtok(nullptr, "\0");
+    if (invalid != nullptr) {
+        InvalidReport();
+        return;
+    }
     if (idCheck(id) && PassWordCheck(passwd1) && PassWordCheck(passwd2))
         current_account->Passwd(id, passwd1, passwd2);
     else InvalidReport();
@@ -138,6 +153,11 @@ void UseraddParser(char *command) {
     char *passwd = strtok(nullptr, delim);
     char *priority = strtok(nullptr, delim);
     char *username = strtok(nullptr, "\0");
+    char *invalid = strtok(nullptr, "\0");
+    if (invalid != nullptr) {
+        InvalidReport();
+        return;
+    }
     if (id == nullptr || passwd == nullptr || priority == nullptr || username == nullptr) {
         InvalidReport();
         return;
@@ -150,6 +170,11 @@ void UseraddParser(char *command) {
 void DeleteParser(char *command) {
     char *id = strtok(command, "\0");
     if (id == nullptr) {
+        InvalidReport();
+        return;
+    }
+    char *invalid = strtok(nullptr, "\0");
+    if (invalid != nullptr) {
         InvalidReport();
         return;
     }
@@ -208,7 +233,12 @@ void ShowParser(char *command) {
 
 void BuyParser(char *command) {
     char *isbn = strtok(command, delim);
-    char *quantity = strtok(nullptr,delim);
+    char *quantity = strtok(nullptr, delim);
+    char *invalid = strtok(nullptr, "\0");
+    if (invalid != nullptr) {
+        InvalidReport();
+        return;
+    }
     if (isbn == nullptr || quantity == nullptr) {
         InvalidReport();
         return;
@@ -221,6 +251,11 @@ void BuyParser(char *command) {
 
 void SelectParser(char *command) {
     char *isbn = command;
+    char *invalid = strtok(nullptr, "\0");
+    if (invalid != nullptr) {
+        InvalidReport();
+        return;
+    }
     if (isbn == nullptr || strcmp(isbn, "\0") == 0) {
         InvalidReport();
         return;
@@ -339,6 +374,11 @@ void ModifyParser(char *command) {
 void ImportParser(char *command) {
     char *quantity = strtok(command, delim);
     char *total = strtok(nullptr, delim);
+    char *invalid = strtok(nullptr, "\0");
+    if (invalid != nullptr) {
+        InvalidReport();
+        return;
+    }
     if (quantity == nullptr || total == nullptr) {
         InvalidReport();
         return;
