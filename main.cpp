@@ -19,7 +19,7 @@ int main() {
     while (running) {
         command = new char[1030];
         memset(command, '\0', 1024 * sizeof(char));
-        if (std::cin.getline(command, 1024)) {
+        if (std::cin.getline(command, 1030)) {
             if (strlen(command) > 1024)InvalidReport();
             else CommandCarryOut(command, running);
         } else exit(0);
