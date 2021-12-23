@@ -65,10 +65,10 @@ void SuParser(char *command) {
     } else InvalidReport();
 }
 
-void Logout(char* command) {
-    if(command!="\0"){
+void Logout(char *command) {
+    if (strcmp(command, "\0") != 0) {
         InvalidReport();
-        return ;
+        return;
     }
     if (Login.empty())InvalidReport();
     else {
