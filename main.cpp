@@ -28,7 +28,7 @@ int main() {
                 std::stringstream ss;
                 ss.clear();
                 ss.str(s);
-                ss >> command;
+                ss.getline(command, 1025);
                 CommandCarryOut(command, running);
             }
         } else exit(0);
