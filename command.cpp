@@ -16,6 +16,7 @@ Visitor *original_visitor;
 extern std::map<People *, bookInfo> selected_book;
 extern BlockList account_list;
 const char line[61]{"=================================="};
+
 void Initialize() {
     current_account = new Visitor;
     original_visitor = dynamic_cast<Visitor *>(current_account);

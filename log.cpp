@@ -237,7 +237,7 @@ void ModifyLog(bookInfo old, bookInfo now) {
     char s[400];
     strcpy(s, "Modify the book\nFrom\n");
     if (strcmp(old.ISBN, now.ISBN) != 0) {
-        strcat(s, "ISBN:   \t");
+        strcat(s, "ISBN:   \t") ;
         if (strcmp(old.ISBN, "\0") == 0)strcat(s, "null");
         else strcat(s, old.ISBN);
         strcat(s, "\n");

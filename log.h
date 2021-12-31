@@ -44,4 +44,6 @@ void ReportAnEmployee(char *id);
 void ReportAllEmployee();
 
 void LogLog();
+
+
 #endif
