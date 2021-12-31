@@ -99,6 +99,7 @@ void Manager::Register(char *id, char *pass_word, char *user_name) {
     file.write(reinterpret_cast<char *>(&regi), sizeof(accountInfo));
     file.close();
     account_list.InsertPair(id, write_location);
+    RegisterLog(id,pass_word,user_name);
 }
 
 void Manager::Passwd(char *id, char *passwd1, char *passwd2) {
@@ -113,6 +114,8 @@ void Manager::Passwd(char *id, char *passwd1, char *passwd2) {
     file.open("AccountFile");
     file.seekg(location);
     file.read(reinterpret_cast<char *>(&right_info), sizeof(accountInfo));
+    char old_passwd[30];
+    strcpy(old_passwd,right_info.Password);
     if (passwd2 == nullptr) {//则第一个就是新密码
         strcpy(right_info.Password, passwd1);
         file.seekp(location);
@@ -123,6 +126,7 @@ void Manager::Passwd(char *id, char *passwd1, char *passwd2) {
         file.write(reinterpret_cast<char *>(&right_info), sizeof(accountInfo));
     } else InvalidReport();
     file.close();
+    PasswdLog(id,old_passwd,right_info.Password);
 }
 
 void Manager::Useradd(char *id, char *pass_word, int priority, char *user_name) {
@@ -147,6 +151,7 @@ void Manager::Useradd(char *id, char *pass_word, int priority, char *user_name) 
     file.write(reinterpret_cast<char *>(&add), sizeof(accountInfo));
     file.close();
     account_list.InsertPair(id, write_location);
+    UseraddLog(id, pass_word, priority, user_name);
 }
 
 void Manager::Delete(char *id) {
@@ -163,6 +168,7 @@ void Manager::Delete(char *id) {
         }
     }
     account_list.DeletePair(id, location);
+    DeleteLog(id);
 }
 
 void Manager::Show(char *isbn, char *name, char *author, char *keyword) {
@@ -193,6 +199,9 @@ void Manager::Show(char *isbn, char *name, char *author, char *keyword) {
                 bookInfo tmp = *ptr;
                 _ShowABook(tmp);
             }
+            char type[10];
+            strcpy(type,"keyword");
+            ShowLog(keyword,type);
         }
     } else if (isbn == nullptr && name == nullptr && author != nullptr && keyword == nullptr) {
         std::vector<int> to_find = author_book_list.FindAllPairs(author);
@@ -213,6 +222,9 @@ void Manager::Show(char *isbn, char *name, char *author, char *keyword) {
                 bookInfo tmp = *ptr;
                 _ShowABook(tmp);
             }
+            char type[10];
+            strcpy(type,"author");
+            ShowLog(author,type);
         }
     } else if (isbn == nullptr && name != nullptr && author == nullptr && keyword == nullptr) {
         std::vector<int> to_find = name_book_list.FindAllPairs(name);
@@ -233,6 +245,9 @@ void Manager::Show(char *isbn, char *name, char *author, char *keyword) {
                 bookInfo tmp = *ptr;
                 _ShowABook(tmp);
             }
+            char type[10];
+            strcpy(type,"name");
+            ShowLog(name,type);
         }
     } else if (isbn != nullptr && name == nullptr && author == nullptr && keyword == nullptr) {
         int location = isbn_book_list.FindPairs(isbn);
@@ -246,9 +261,15 @@ void Manager::Show(char *isbn, char *name, char *author, char *keyword) {
             file.read(reinterpret_cast<char *>(&(to_show.info)), sizeof(bookInfo));
             to_show.ShowABook();
             file.close();
+            char type[10];
+            strcpy(type,"ISBN");
+            ShowLog(isbn,type);
         }
     } else if (isbn == nullptr && name == nullptr && author == nullptr && keyword == nullptr) {
         isbn_book_list.ShowAllBooks();
+        char all[4]="all";
+        char type[5]="type";
+        ShowLog(all,type);
     } else {
         InvalidReport();
         return;
@@ -287,6 +308,8 @@ void Manager::Buy(char *isbn, int quantity) {
     std::cout << total_str << std::endl;
     RecordAnEntry(total);
     UpdateSelectedBook(to_buy, to_buy.ISBN);
+    Buy_record(quantity,total,to_buy);
+    BuyLog(to_buy.ISBN,quantity,total);
 }
 
 void Manager::Select(char *isbn) {
@@ -318,6 +341,7 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
         return;
     }
     bookInfo to_modify = selected_book[current_account];
+    bookInfo old;
     char modified_isbn[35];
     strcpy(modified_isbn, to_modify.ISBN);//记下原有的ISBN，便于把其他选择了这本书的人书的信息修改了
     int location = isbn_book_list.FindPairs(to_modify.ISBN);
@@ -383,6 +407,7 @@ void Manager::Modify(char *isbn, char *name, char *author, char *keyword, double
     file.close();
     selected_book[current_account] = to_modify;
     UpdateSelectedBook(to_modify, modified_isbn);
+    ModifyLog(old,to_modify);
 }
 
 void Manager::Import(int quantity, double cost) {
@@ -401,9 +426,12 @@ void Manager::Import(int quantity, double cost) {
     RecordAnEntry((-1.0) * cost);
     selected_book[current_account] = to_import;
     UpdateSelectedBook(to_import, to_import.ISBN);
+    Import_record(quantity,cost);
+    ImportLog(to_import.ISBN,quantity,cost);
 }
 
 void Manager::ReportMyself() {
+    ReportMyselfLog();
     return;
 }
 
@@ -418,14 +446,18 @@ void Manager::ShowFinance() {
 }
 
 void Manager::ReportFinance() {
+    ReportFinanceLog();
     return;
 }
 
 void Manager::ReportEmployee() {
+    ReportAllEmployee();
+    std::cout << "The report is in the file named \"EmployeeReport\"\n";
     return;
 }
 
 void Manager::Log() {
+    LogLog();
     return;
 }
 
@@ -502,6 +534,7 @@ void Employee::Register(char *id, char *pass_word, char *user_name) {
     file.write(reinterpret_cast<char *>(&regi), sizeof(accountInfo));
     file.close();
     account_list.InsertPair(id, write_location);
+    RegisterLog(id,pass_word,user_name);
 }
 
 void Employee::Passwd(char *id, char *passwd1, char *passwd2) {
@@ -516,6 +549,8 @@ void Employee::Passwd(char *id, char *passwd1, char *passwd2) {
     file.open("AccountFile");
     file.seekg(location);
     file.read(reinterpret_cast<char *>(&right_info), sizeof(accountInfo));
+    char old_passwd[30];
+    strcpy(old_passwd,right_info.Password);
     if (passwd2 == nullptr) {//则第一个就是新密码
         InvalidReport();
         return;
@@ -525,6 +560,7 @@ void Employee::Passwd(char *id, char *passwd1, char *passwd2) {
         file.write(reinterpret_cast<char *>(&right_info), sizeof(accountInfo));
     } else InvalidReport();
     file.close();
+    PasswdLog(id,old_passwd,right_info.Password);
 }
 
 void Employee::Useradd(char *id, char *pass_word, int priority, char *user_name) {
@@ -549,6 +585,7 @@ void Employee::Useradd(char *id, char *pass_word, int priority, char *user_name)
     file.write(reinterpret_cast<char *>(&add), sizeof(accountInfo));
     file.close();
     account_list.InsertPair(id, write_location);
+    UseraddLog(id,pass_word,priority,user_name);
 }
 
 void Employee::Delete(char *id) {
@@ -583,6 +620,9 @@ void Employee::Show(char *isbn, char *name, char *author, char *keyword) {
                 bookInfo tmp = *ptr;
                 _ShowABook(tmp);
             }
+            char type[10];
+            strcpy(type,"keyword");
+            ShowLog(keyword,type);
         }
     } else if (isbn == nullptr && name == nullptr && author != nullptr && keyword == nullptr) {
         std::vector<int> to_find = author_book_list.FindAllPairs(author);
@@ -603,6 +643,9 @@ void Employee::Show(char *isbn, char *name, char *author, char *keyword) {
                 bookInfo tmp = *ptr;
                 _ShowABook(tmp);
             }
+            char type[10];
+            strcpy(type,"author");
+            ShowLog(author,type);
         }
     } else if (isbn == nullptr && name != nullptr && author == nullptr && keyword == nullptr) {
         std::vector<int> to_find = name_book_list.FindAllPairs(name);
@@ -623,6 +666,9 @@ void Employee::Show(char *isbn, char *name, char *author, char *keyword) {
                 bookInfo tmp = *ptr;
                 _ShowABook(tmp);
             }
+            char type[10];
+            strcpy(type,"name");
+            ShowLog(name,type);
         }
     } else if (isbn != nullptr && name == nullptr && author == nullptr && keyword == nullptr) {
         int location = isbn_book_list.FindPairs(isbn);
@@ -636,9 +682,15 @@ void Employee::Show(char *isbn, char *name, char *author, char *keyword) {
             file.read(reinterpret_cast<char *>(&(to_show.info)), sizeof(bookInfo));
             to_show.ShowABook();
             file.close();
+            char type[10];
+            strcpy(type,"ISBN");
+            ShowLog(isbn,type);
         }
     } else if (isbn == nullptr && name == nullptr && author == nullptr && keyword == nullptr) {
         isbn_book_list.ShowAllBooks();
+        char all[4]="all";
+        char type[5]="type";
+        ShowLog(all,type);
     } else {
         InvalidReport();
         return;
@@ -677,7 +729,8 @@ void Employee::Buy(char *isbn, int quantity) {
     std::cout << total_str << std::endl;
     RecordAnEntry(total);
     UpdateSelectedBook(to_buy, to_buy.ISBN);
-
+    Buy_record(quantity,total,to_buy);
+    BuyLog(to_buy.ISBN,quantity,total);
 }
 
 void Employee::Select(char *isbn) {
@@ -709,6 +762,7 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
         return;
     }
     bookInfo to_modify = selected_book[current_account];
+    bookInfo old=to_modify;
     char modified_isbn[35];
     strcpy(modified_isbn, to_modify.ISBN);//记下原有的ISBN，便于把其他选择了这本书的人书的信息修改了
     int location = isbn_book_list.FindPairs(to_modify.ISBN);
@@ -774,6 +828,7 @@ void Employee::Modify(char *isbn, char *name, char *author, char *keyword, doubl
     file.close();
     selected_book[current_account] = to_modify;
     UpdateSelectedBook(to_modify, modified_isbn);
+    ModifyLog(old,to_modify);
 }
 
 void Employee::Import(int quantity, double cost) {
@@ -796,9 +851,12 @@ void Employee::Import(int quantity, double cost) {
     RecordAnEntry((-1.0) * cost);
     selected_book[current_account] = to_import;
     UpdateSelectedBook(to_import, to_import.ISBN);
+    Import_record(quantity,cost);
+    ImportLog(to_import.ISBN,quantity,cost);
 }
 
 void Employee::ReportMyself() {
+    ReportMyselfLog();
     return;
 }
 
@@ -896,6 +954,7 @@ void Customer::Register(char *id, char *pass_word, char *user_name) {
     file.write(reinterpret_cast<char *>(&regi), sizeof(accountInfo));
     file.close();
     account_list.InsertPair(id, write_location);
+    RegisterLog(id,pass_word,user_name);
 }
 
 void Customer::Passwd(char *id, char *passwd1, char *passwd2) {
@@ -910,6 +969,8 @@ void Customer::Passwd(char *id, char *passwd1, char *passwd2) {
     file.open("AccountFile");
     file.seekg(location);
     file.read(reinterpret_cast<char *>(&right_info), sizeof(accountInfo));
+    char old_passwd[30];
+    strcpy(old_passwd,right_info.Password);
     if (passwd2 == nullptr) {//则第一个就是新密码
         InvalidReport();
         return;
@@ -919,6 +980,7 @@ void Customer::Passwd(char *id, char *passwd1, char *passwd2) {
         file.write(reinterpret_cast<char *>(&right_info), sizeof(accountInfo));
     } else InvalidReport();
     file.close();
+    PasswdLog(id,old_passwd,right_info.Password);
 }
 
 void Customer::Useradd(char *id, char *pass_word, int priority, char *user_name) {
@@ -957,6 +1019,9 @@ void Customer::Show(char *isbn, char *name, char *author, char *keyword) {
                 bookInfo tmp = *ptr;
                 _ShowABook(tmp);
             }
+            char type[10];
+            strcpy(type,"keyword");
+            ShowLog(keyword,type);
         }
     } else if (isbn == nullptr && name == nullptr && author != nullptr && keyword == nullptr) {
         std::vector<int> to_find = author_book_list.FindAllPairs(author);
@@ -977,6 +1042,9 @@ void Customer::Show(char *isbn, char *name, char *author, char *keyword) {
                 bookInfo tmp = *ptr;
                 _ShowABook(tmp);
             }
+            char type[10];
+            strcpy(type,"author");
+            ShowLog(author,type);
         }
     } else if (isbn == nullptr && name != nullptr && author == nullptr && keyword == nullptr) {
         std::vector<int> to_find = name_book_list.FindAllPairs(name);
@@ -997,6 +1065,9 @@ void Customer::Show(char *isbn, char *name, char *author, char *keyword) {
                 bookInfo tmp = *ptr;
                 _ShowABook(tmp);
             }
+            char type[10];
+            strcpy(type,"name");
+            ShowLog(name,type);
         }
     } else if (isbn != nullptr && name == nullptr && author == nullptr && keyword == nullptr) {
         int location = isbn_book_list.FindPairs(isbn);
@@ -1010,15 +1081,20 @@ void Customer::Show(char *isbn, char *name, char *author, char *keyword) {
             file.read(reinterpret_cast<char *>(&(to_show.info)), sizeof(bookInfo));
             to_show.ShowABook();
             file.close();
+            char type[10];
+            strcpy(type,"ISBN");
+            ShowLog(isbn,type);
         }
     } else if (isbn == nullptr && name == nullptr && author == nullptr && keyword == nullptr) {
         isbn_book_list.ShowAllBooks();
+        char all[4]="all";
+        char type[5]="type";
+        ShowLog(all,type);
     } else {
         InvalidReport();
         return;
     }
 }
-
 
 void Customer::Buy(char *isbn, int quantity) {
     std::fstream file;
@@ -1051,6 +1127,8 @@ void Customer::Buy(char *isbn, int quantity) {
     std::cout << total_str << std::endl;
     RecordAnEntry(total);
     UpdateSelectedBook(to_buy, to_buy.ISBN);
+    Buy_record(quantity,total,to_buy);
+    BuyLog(to_buy.ISBN,quantity,total);
 }
 
 

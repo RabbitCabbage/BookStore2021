@@ -11,6 +11,7 @@ BlockList isbn_book_list("ISBN_BookList");
 BlockList name_book_list("Name_BookList");
 BlockList author_book_list("Author_BookList");
 BlockList keyword_book_list("Keyword_BookList");
+BlockList work_log_list("WorkList");
 extern People *current_account;
 extern std::vector<People *> Login;
 

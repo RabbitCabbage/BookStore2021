@@ -15,7 +15,7 @@ People *current_account = nullptr;
 Visitor *original_visitor;
 extern std::map<People *, bookInfo> selected_book;
 extern BlockList account_list;
-
+const char line[61]{"=================================="};
 void Initialize() {
     current_account = new Visitor;
     original_visitor = dynamic_cast<Visitor *>(current_account);
@@ -23,6 +23,14 @@ void Initialize() {
     std::fstream initialize;
     initialize.open("BookFile", std::ios::in);
     if (!initialize) {
+        initialize.open("FinanceReport",std::ios::out|std::ios::app);
+        initialize<<"FinanceReport\n\n";
+        initialize<<"for RabbitCabbage BookStore\n\n";
+        initialize<<line;
+        initialize<<'\n';
+        initialize.close();
+        initialize.open("WorkReport(binary)",std::ios::out|std::ios::app);
+        initialize.close();
         initialize.open("AccountFile", std::ios::out | std::ios::app);
         accountInfo super;
         strcpy(super.UserID, "root");
