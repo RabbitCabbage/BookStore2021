@@ -28,6 +28,6 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: AutoTest
-        run: cd ./bookstore2021,g++ -g automatic.cpp -o auto,./auto
+        run: g++ -g automatic.cpp -o auto,./auto
         
         
