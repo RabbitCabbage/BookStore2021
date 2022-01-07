@@ -141,7 +141,7 @@ void PasswdLog(char *id, char *passwd1, char *passwd2) {
     strcat(s, passwd2);
     strcat(s, "\n");
     std::fstream work;
-    work.open("WorkReport(binary)");
+    work.open("WorkReportBinary");
     work.seekp(0, std::ios::end);
     int location = work.tellp();
     work.write(reinterpret_cast<char *>(&s), sizeof(s));
@@ -155,7 +155,7 @@ void DeleteLog(char *id) {
     strcat(s, id);
     strcat(s, "\n");
     std::fstream work;
-    work.open("WorkReport(binary)");
+    work.open("WorkReportBinary");
     work.seekp(0, std::ios::end);
     int location = work.tellp();
     work.write(reinterpret_cast<char *>(&s), sizeof(s));
@@ -178,7 +178,7 @@ void UseraddLog(char *id, char *pass_word, int priority, char *user_name) {
     strcat(s, user_name);
     strcat(s, "\n");
     std::fstream work;
-    work.open("WorkReport(binary)");
+    work.open("WorkReportBinary");
     work.seekp(0, std::ios::end);
     int location = work.tellp();
     work.write(reinterpret_cast<char *>(&s), sizeof(s));
@@ -197,7 +197,7 @@ void RegisterLog(char *id, char *pass_word, char *user_name) {
     strcat(s, user_name);
     strcat(s, "\n");
     std::fstream work;
-    work.open("WorkReport(binary)");
+    work.open("WorkReportBinary");
     work.seekp(0, std::ios::end);
     int location = work.tellp();
     work.write(reinterpret_cast<char *>(&s), sizeof(s));
@@ -214,7 +214,7 @@ void ShowLog(char *show_argv, char *type) {
     strcat(s, show_argv);
     strcat(s, "\n");
     std::fstream work;
-    work.open("WorkReport(binary)");
+    work.open("WorkReportBinary");
     work.seekp(0, std::ios::end);
     int location = work.tellp();
     work.write(reinterpret_cast<char *>(&s), sizeof(s));
@@ -307,7 +307,7 @@ void ModifyLog(bookInfo old, bookInfo now) {
         strcat(s, "\n");
     }
     std::fstream work;
-    work.open("WorkReport(binary)", std::ios::app);
+    work.open("WorkReportBinary", std::ios::app);
     int location = work.tellp();
     work_log_list.InsertPair(current_account->GetInfo().UserID, location);
     work.write(reinterpret_cast<char *>(&s), sizeof(s));
@@ -335,7 +335,7 @@ void ImportLog(char *isbn, int quantity, double cost) {
     strcat(s, expense);
     strcat(s, "\n");
     std::fstream work;
-    work.open("WorkReport(binary)");
+    work.open("WorkReportBinary");
     work.seekp(0, std::ios::end);
     int location = work.tellp();
     work.write(reinterpret_cast<char *>(&s), sizeof(s));
@@ -364,7 +364,7 @@ void BuyLog(char *isbn, int quantity, double total) {
     strcat(s, income);
     strcat(s, "\n");
     std::fstream work;
-    work.open("WorkReport(binary)");
+    work.open("WorkReportBinary");
     work.seekp(0, std::ios::end);
     int location = work.tellp();
     work.write(reinterpret_cast<char *>(&s), sizeof(s));
@@ -382,7 +382,7 @@ void ReportMyselfLog() {
     ss >> filename;
     filename += "'s Work Report";
     my.open(filename, std::ios::out);
-    work_log.open("WorkReport(binary)");
+    work_log.open("WorkReportBinary");
     my << filename << "\n\n\nName: ";
     my << current_account->GetInfo().Username;
     my << "\n";
@@ -420,7 +420,7 @@ void ReportAnEmployee(char *id) {
     tmp.close();
     my << "Employee Name: ";
     my << myInfo.Username << "\n";
-    work_log.open("WorkReport(binary)");
+    work_log.open("WorkReportBinary");
     std::vector<int> my_work = work_log_list.FindAllPairs(id);
     for (auto ptr = my_work.begin(); ptr != my_work.end(); ++ptr) {
         char entry[200];

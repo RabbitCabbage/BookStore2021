@@ -24,13 +24,13 @@ void Initialize() {
     std::fstream initialize;
     initialize.open("BookFile", std::ios::in);
     if (!initialize) {
-        initialize.open("FinanceReport",std::ios::out|std::ios::app);
-        initialize<<"FinanceReport\n\n";
-        initialize<<"for RabbitCabbage BookStore\n\n";
-        initialize<<line;
-        initialize<<'\n';
+        initialize.open("FinanceReport", std::ios::out | std::ios::app);
+        initialize << "FinanceReport\n\n";
+        initialize << "for RabbitCabbage BookStore\n\n";
+        initialize << line;
+        initialize << '\n';
         initialize.close();
-        initialize.open("WorkReport(binary)",std::ios::out|std::ios::app);
+        initialize.open("WorkReportBinary", std::ios::out | std::ios::app);
         initialize.close();
         initialize.open("AccountFile", std::ios::out | std::ios::app);
         accountInfo super;
@@ -44,6 +44,14 @@ void Initialize() {
         initialize.open("BookFile", std::ios::out | std::ios::app);
         initialize.close();
         initialize.open("FinanceRecord", std::ios::out | std::ios::app);
+        initialize.close();
+        initialize.open("Keyword_BookList", std::ios::out | std::ios::app);
+        initialize.close();
+        initialize.open("Author_BookList", std::ios::out | std::ios::app);
+        initialize.close();
+        initialize.open("Name_BookList", std::ios::out | std::ios::app);
+        initialize.close();
+        initialize.open("ISBN_BookList", std::ios::out | std::ios::app);
         initialize.close();
     } else initialize.close();
 }
