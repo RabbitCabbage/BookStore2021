@@ -286,7 +286,7 @@ int main() {
                 strcat(cmd, "10");
                 strcpy(in_number, "10");
             }
-            strcat(cmd, ".in >out.txt");
+            strcat(cmd, ".in >out.txt\n");
             system(cmd);
             strcpy(cmd, "diff out.txt ./Data/AdvancedDataSet/testcase");
             strcat(cmd, number);
@@ -351,7 +351,7 @@ int main() {
                 strcat(cmd, "10");
                 strcpy(in_number, "10");
             }
-            strcat(cmd, ".in>out.txt");
+            strcat(cmd, ".in >out.txt\n");
             system(cmd);
             strcpy(cmd, "diff out.txt ./Data/ComplexDataSet/testcase");
             strcat(cmd, number);
