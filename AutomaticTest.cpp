@@ -400,7 +400,7 @@ int main() {
         system(cmd);
     }
     system("rm cmake_install.cmake\nrm cmakecache.txt\nrm auto\nrm code\nrm makefile\n");
-    system("echo All Test Track Completed\n");
+    system("echo All Test Track Completed 103/103\n");
     system("echo SCORE: \n");
     char score_[20];
     stringstream sss;
