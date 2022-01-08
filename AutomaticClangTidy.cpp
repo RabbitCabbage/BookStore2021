@@ -14,7 +14,6 @@ int main() {
     system("echo Lint Check for RabbitCabbage BookStore2021\n");
     system("cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON .");
     system("echo   \n");
-    system("echo   \n");
     system("echo =============================MAIN.CPP=============================\n");
     system("clang-tidy --checks='' main.cpp \n");
     system("echo   \n");

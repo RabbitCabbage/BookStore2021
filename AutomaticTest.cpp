@@ -408,6 +408,7 @@ int main() {
     sss >> score_;
     strcpy(cmd, "echo ");
     strcat(cmd, score_);
+    strcat(cmd,"/103");
     system(cmd);
     return 0;
 }
