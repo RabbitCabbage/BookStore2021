@@ -6,7 +6,7 @@ Invalid
 978-1-04-118023-4	smart	CliffordThornton	FPC|foundling	269.78	6
 978-1-383-15414-6	tore	CrystalWalton	FPC	414.34	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 Invalid
@@ -52,7 +52,8 @@ Invalid
 978-0-8113-1987-4			dialysis	0.00	6
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 978-1-891666-71-1	cation	GeorgeRandolph	Beaujolais|dialysis	205.28	29
 Invalid
 Invalid
@@ -73,7 +74,6 @@ Invalid
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	23
 978-1-218-91208-8	peak		botulin	171.46	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
 978-1-874616-50-4	energetic	JamesTorres	botulin	163.78	0
 Invalid
 Invalid
@@ -169,18 +169,17 @@ Invalid
 978-0-8113-1987-4			dialysis	0.00	6
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 978-1-891666-71-1	reflect	GeorgeRandolph	factual|dialysis|foundling|FPC	205.28	29
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	23
 978-1-218-91208-8	peak		botulin	171.46	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
 978-1-874616-50-4	energetic	JamesTorres	botulin	163.78	0
 Invalid
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	23
 978-1-218-91208-8	peak		botulin	171.46	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
 978-1-874616-50-4	energetic	JamesTorres	botulin	163.78	0
 Invalid
 Invalid
@@ -212,7 +211,8 @@ Invalid
 978-0-8113-1987-4			dialysis	0.00	6
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 978-1-891666-71-1	reflect	GeorgeRandolph	factual|dialysis|foundling|FPC	205.28	29
 Invalid
 Invalid
@@ -265,8 +265,8 @@ Invalid
 978-1-212-78511-4		ScottFlores	Haberman|factual|Louisiana	21.39	0
 978-1-7371496-2-0	counterclockwise	AlexHorton	Louisiana|Haberman	14.94	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 978-0-404-87318-9	intake		Louisiana|Haberman	0.00	0
@@ -345,8 +345,8 @@ Invalid
 978-1-212-78511-4		ScottFlores	Haberman|factual|Louisiana	21.39	0
 978-1-7371496-2-0	counterclockwise	AlexHorton	Louisiana|Haberman	14.94	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 Invalid
@@ -361,7 +361,7 @@ Invalid
 978-1-04-118023-4	smart	CliffordThornton	FPC|foundling	269.78	6
 978-1-383-15414-6	tore	CrystalWalton	FPC	414.34	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 978-1-86846-008-3	bulky	JeremyWood	botulin|Siamese|Beaujolais|FPC	248.06	0
 978-1-891666-71-1	reflect	GeorgeRandolph	factual|dialysis|foundling|FPC	205.28	28
 Invalid
@@ -390,7 +390,7 @@ Invalid
 978-0-8471-4079-4	nitroglycerine	ChristopherVelasquez	antique|FPC	366.46	0
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 Invalid

@@ -1,4 +1,4 @@
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
+
 Invalid
 
 Invalid
@@ -11,20 +11,20 @@ Invalid
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	24
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	24
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 Invalid
 978-1-7371496-2-0	counterclockwise	AlexHorton	Louisiana|Haberman	14.94	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 978-0-443-03854-9	lure	MelissaKennedy	foundling	141.92	0
 Invalid
 Invalid
@@ -45,7 +45,7 @@ Invalid
 978-1-04-118023-4	smart	CliffordThornton	FPC|foundling	269.78	6
 978-1-383-15414-6	tore	CrystalWalton	FPC	414.34	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 Invalid
@@ -66,8 +66,8 @@ Invalid
 Invalid
 978-1-7371496-2-0	counterclockwise	AlexHorton	Louisiana|Haberman	14.94	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 Invalid
@@ -100,7 +100,8 @@ Invalid
 Invalid
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 978-1-891666-71-1	save	GeorgeRandolph	Beaujolais|dialysis	99.45	30
 Invalid
 
@@ -111,7 +112,6 @@ Invalid
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	24
 978-1-218-91208-8	peak		botulin	171.46	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
 978-1-874616-50-4	energetic	JamesTorres	botulin	163.78	0
 
 99.45
@@ -123,7 +123,6 @@ Invalid
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	24
 978-1-218-91208-8	peak		botulin	171.46	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
 978-1-874616-50-4	energetic	JamesTorres	botulin	163.78	0
 Invalid
 Invalid
@@ -183,8 +182,8 @@ Invalid
 Invalid
 978-1-7371496-2-0	counterclockwise	AlexHorton	Louisiana|Haberman	14.94	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 Invalid
@@ -205,8 +204,7 @@ Invalid
 
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	24
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 Invalid
@@ -219,8 +217,7 @@ Invalid
 
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	23
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 50.03
@@ -259,7 +256,7 @@ Invalid
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	23
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 
 Invalid
 Invalid
@@ -272,7 +269,7 @@ Invalid
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	23
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 Invalid
@@ -299,7 +296,7 @@ Invalid
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	23
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 Invalid
 Invalid
@@ -321,9 +318,9 @@ Invalid
 Invalid
 978-1-7371496-2-0	counterclockwise	AlexHorton	Louisiana|Haberman	14.94	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
+
 Invalid
 Invalid
 978-0-7491-3056-5	hoodlum	ScottFlores	FPC	50.03	10
@@ -337,8 +334,7 @@ Invalid
 
 978-0-440-52054-2	stationarity	CrystalWalton	factual|botulin|antique	251.62	23
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 Invalid
 
 
@@ -396,7 +392,7 @@ Invalid
 Invalid
 Invalid
 
-978-1-79984-815-8	inclement	EricJones	Haberman|botulin|factual	373.39	0
+
 Invalid
 Invalid
 Invalid
@@ -475,7 +471,8 @@ Invalid
 Invalid
 978-1-336-39277-9	vitreous	ChristopherVelasquez	foundling|dialysis|factual|antique|Beaujolais	207.53	0
 978-1-76164-425-2	acacia	ManuelRichardson	Haberman|FPC|dialysis|antique|botulin	34.00	0
-978-1-85099-059-8	cabal	ScottFlores	dialysis|factual|FPC|Haberman|antique	114.48	0
+978-1-79984-815-8	sentence	ScottFlores	dialysis|Haberman	66.19	0
+978-1-85099-059-8	cabal		dialysis|factual|FPC|Haberman|antique	114.48	0
 978-1-891666-71-1	save	GeorgeRandolph	Beaujolais|dialysis	99.45	29
 Invalid
 Invalid
