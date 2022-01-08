@@ -9,21 +9,21 @@ using namespace std;
 int main() {
     int score = 0;
     char cmd[200];
-    system("cd ../bookstore2021\n");
+    system("cd ../BookStore2021\n");
     system("echo  Test Report for RabbitCabbage BookStore2021\n");
     system("pwd\n");
-    strcpy(cmd, "cmake cmakelists.txt\n");
+    strcpy(cmd, "cmake CmakeLists.txt\n");
     system(cmd);
     strcpy(cmd, "make\n");
     system(cmd);
     for (int i = 1; i <= 6; ++i) {
-        strcpy(cmd, "./code<./data/basicdataset/testcase");
+        strcpy(cmd, "./code<./Data/BasicDataSet/testcase");
         char num = static_cast<char>('0' + i);
         char number[2] = {num, '\0'};
         strcat(cmd, number);
         strcat(cmd, ".txt >out.txt\n");
         system(cmd);
-        strcpy(cmd, "diff out.txt ./data/basicdataset/testcase");
+        strcpy(cmd, "diff out.txt ./Data/BasicDataSet/testcase");
         strcat(cmd, number);
         strcat(cmd, "_ans.txt\n");
         int judge = system(cmd);
@@ -66,14 +66,14 @@ int main() {
 
     system("touch out.txt");
     for (int i = 1; i <= 3; ++i) {
-        strcpy(cmd, "./code<./data/basicdataset/testcase7/");
+        strcpy(cmd, "./code<./Data/BasicDataSet/testcase7/");
         char num = static_cast<char>('0' + i);
         char number[2] = {num, '\0'};
         strcat(cmd, number);
         strcat(cmd, ".txt >out.txt\n");
         system(cmd);
     }
-    strcpy(cmd, "diff out.txt ./data/basicdataset/testcase7/ans.txt");
+    strcpy(cmd, "diff out.txt ./Data/BasicDataSet/testcase7/ans.txt");
     int judge2 = system(cmd);
     if (judge2 == 0)score++;
     strcpy(cmd, "echo BasicDataSet/testcase7 Checked\n");
@@ -106,7 +106,7 @@ int main() {
     system(cmd);
     system("touch out.txt");
     for (int i = 1; i <= 100; ++i) {
-        strcpy(cmd, "./code<./data/basicdataset/testcase8/");
+        strcpy(cmd, "./code<./Data/BasicDataSet/testcase8/");
         char number[4];
         stringstream ss;
         ss << i;
@@ -115,7 +115,7 @@ int main() {
         strcat(cmd, ".txt >>out.txt\n");
         system(cmd);
     }
-    strcpy(cmd, "diff out.txt ./data/basicdataset/testcase8/ans.txt");
+    strcpy(cmd, "diff out.txt ./Data/BasicDataSet/testcase8/ans.txt");
     int judge3 = system(cmd);
     if (judge3 == 0)score++;
     strcpy(cmd, "echo BasicDataSet/testcase8 Checked\n");
@@ -148,7 +148,7 @@ int main() {
     system(cmd);
     for (int i = 1; i <= 2; ++i) {
         for (int j = 1; j <= 10; ++j) {
-            strcpy(cmd, "./code<./data/advanceddataset/testcase");
+            strcpy(cmd, "./code<./Data/AdvancedDataSet/testcase");
             char num = static_cast<char>('0' + i);
             char number[2] = {num, '\0'};
             strcat(cmd, number);
@@ -165,7 +165,7 @@ int main() {
             }
             strcat(cmd, ".in >out.txt\n");
             system(cmd);
-            strcpy(cmd, "diff out.txt ./data/advanceddataset/testcase");
+            strcpy(cmd, "diff out.txt ./Data/AdvancedDataSet/testcase");
             strcat(cmd, number);
             strcat(cmd, "/");
             strcat(cmd, in_number);
@@ -213,7 +213,7 @@ int main() {
     }
     for (int i = 3; i <= 3; ++i) {
         for (int j = 1; j <= 5; ++j) {
-            strcpy(cmd, "./code<./data/advanceddataset/testcase");
+            strcpy(cmd, "./code<./Data/AdvancedDataSet/testcase");
             char num = static_cast<char>('0' + i);
             char number[2] = {num, '\0'};
             strcat(cmd, number);
@@ -223,7 +223,7 @@ int main() {
             strcat(cmd, in_number);
             strcat(cmd, ".in >out.txt\n");
             system(cmd);
-            strcpy(cmd, "diff out.txt ./data/advanceddataset/testcase");
+            strcpy(cmd, "diff out.txt ./Data/AdvancedDataSet/testcase");
             strcat(cmd, number);
             strcat(cmd, "/");
             strcat(cmd, in_number);
@@ -271,7 +271,7 @@ int main() {
     }
     for (int i = 4; i <= 5; ++i) {
         for (int j = 1; j <= 10; ++j) {
-            strcpy(cmd, "./code<./data/advanceddataset/testcase");
+            strcpy(cmd, "./code<./Data/AdvancedDataSet/testcase");
             char num = static_cast<char>('0' + i);
             char number[2] = {num, '\0'};
             strcat(cmd, number);
@@ -288,7 +288,7 @@ int main() {
             }
             strcat(cmd, ".in >out.txt");
             system(cmd);
-            strcpy(cmd, "diff out.txt ./data/advanceddataset/testcase");
+            strcpy(cmd, "diff out.txt ./Data/AdvancedDataSet/testcase");
             strcat(cmd, number);
             strcat(cmd, "/");
             strcat(cmd, in_number);
@@ -336,7 +336,7 @@ int main() {
     }
     for (int i = 1; i <= 5; ++i) {
         for (int j = 1; j <= 10; ++j) {
-            strcpy(cmd, "./code<./data/complexdataset/testcase");
+            strcpy(cmd, "./code<./Data/ComplexDataSet/testcase");
             char num = static_cast<char>('0' + i);
             char number[2] = {num, '\0'};
             strcat(cmd, number);
@@ -353,7 +353,7 @@ int main() {
             }
             strcat(cmd, ".in>out.txt");
             system(cmd);
-            strcpy(cmd, "diff out.txt ./data/complexdataset/testcase");
+            strcpy(cmd, "diff out.txt ./Data/ComplexDataSet/testcase");
             strcat(cmd, number);
             strcat(cmd, "/");
             strcat(cmd, in_number);
